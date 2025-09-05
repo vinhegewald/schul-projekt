@@ -1,4 +1,4 @@
-# Schul-Projektgit@github.com:vinhegewald/schul-projekt.git
+# Schul-Projekt
 
 # Team Rackley
 
