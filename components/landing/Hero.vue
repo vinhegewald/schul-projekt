@@ -1,6 +1,6 @@
 <template>
   <section
-    class="relative h-[600px] bg-cover bg-center bg-no-repeat flex items-center justify-center"
+    class="relative h-[600px] mt-[117px] bg-cover bg-center bg-no-repeat flex items-center justify-center"
     style="background-image: url('/images/background-hero.png')"
   >
     <div class="relative z-10 flex flex-col items-center gap-10">
