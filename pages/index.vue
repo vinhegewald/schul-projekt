@@ -2,6 +2,7 @@
   <div>
     <LandingHero />
     <LandingAbout />
+    <LandingFooter />
   </div>
 </template>
 
