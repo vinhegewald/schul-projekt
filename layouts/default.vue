@@ -1,8 +1,10 @@
 <template>
-  <div class="min-h-screen">
+  <div class="min-h-screen flex flex-col">
     <GenericSidebar />
-
-    <slot />
+    <main class="flex-1 p4">
+      <slot />
+    </main>
+    <LandingFooter />
   </div>
 </template>
 
