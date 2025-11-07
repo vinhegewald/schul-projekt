@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen">
-    <GenericNavbar />
+    <GenericSidebar />
 
     <slot />
   </div>
