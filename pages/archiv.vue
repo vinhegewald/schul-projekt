@@ -1,7 +1,6 @@
 <template>
   <div>
-    <LandingHero />
-    <LandingAbout />
+    <ArchiveArchive />
   </div>
 </template>
 
