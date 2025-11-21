@@ -10,7 +10,7 @@
         Print 4 Future
       </h1>
       <a
-        href="/products"
+        href="/produkte"
         class="border-2 border-white mt-5 text-white px-9 py-4 text-xl rounded-md font-medium hover:bg-white hover:text-black transition-colors"
       >
         Alle Produkte
