@@ -201,7 +201,7 @@ const salutationOptions = ['Frau', 'Herr', 'Keine Angabe'];
   </div>
 </template>
 
-<style scoped>
+<!-- <style scoped>
 /* Remove default select arrow in IE */
 select::-ms-expand {
   display: none;
@@ -212,7 +212,7 @@ input:focus, select:focus, textarea:focus {
   box-shadow: 0 0 0 2px rgba(139, 133, 128, 0.3);
 }
 
-/* Checkbox styling for better cross-browser support */
+/* Checkbox styling for better cross-browser support
 input[type="checkbox"] {
   -webkit-appearance: none;
   appearance: none;
@@ -224,6 +224,8 @@ input[type="checkbox"] {
   position: relative;
   flex-shrink: 0;
 }
+
+ */
 
 input[type="checkbox"]:checked {
   background-color: #8B8580;
@@ -242,3 +244,4 @@ input[type="checkbox"]:checked::after {
   transform: rotate(45deg);
 }
 </style>
+-->
