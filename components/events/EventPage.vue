@@ -37,7 +37,7 @@
     <!-- Map Section (optional) -->
     <section v-if="location" class="map-section my-16 mx-auto max-w-6xl px-6">
       <ClientOnly>
-        <EventMapComponent :location="location" :zoom="mapZoom" />
+        <EventsMapComponent :location="location" :zoom="mapZoom" />
         <template #fallback>
           <div class="h-[400px] bg-gray-200 rounded-lg flex items-center justify-center">
             <p class="text-gray-600">Karte wird geladen...</p>
@@ -80,17 +80,4 @@ defineOptions({
 });
 </script>
 
-<style scoped>
-.hero-section {
-  position: relative;
-}
-
-.hero-overlay {
-  /* Gradient overlay for better text readability */
-}
-
-.hero-content {
-  /* Text positioning on the hero image */
-}
-</style>
 

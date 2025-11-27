@@ -1,12 +1,12 @@
 <template>
-  <div class="map-container">
-    <div class="map-wrapper">
+  <div class="w-full">
+    <div class="w-full h-[400px] rounded-lg overflow-hidden shadow-lg border-2 border-gray-300">
       <LMap
         ref="map"
         :zoom="zoom"
         :center="center"
         :use-global-leaflet="false"
-        class="leaflet-map"
+        class="w-full h-full"
       >
         <LTileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -16,7 +16,7 @@
         />
         <LMarker :lat-lng="center">
           <LPopup>
-            <div class="popup-content">
+            <div class="p-2">
               <strong>{{ location.name }}</strong>
               <p class="text-sm mt-1">{{ location.address }}</p>
             </div>
@@ -24,9 +24,9 @@
         </LMarker>
       </LMap>
     </div>
-    
-    <div class="map-info mt-4">
-      <h3 class="font-bold text-xl mb-2">📍 Veranstaltungsort</h3>
+
+    <div class="mt-4">
+      <h3 class="font-bold text-xl mb-2">Veranstaltungsort</h3>
       <p class="text-lg mb-2">{{ location.address }}</p>
       <a
         :href="googleMapsLink"
@@ -77,22 +77,4 @@ defineOptions({
   name: 'EventMapComponent',
 });
 </script>
-
-<style scoped>
-.map-container {
-  @apply w-full;
-}
-
-.map-wrapper {
-  @apply w-full h-[400px] rounded-lg overflow-hidden shadow-lg border-2 border-gray-300;
-}
-
-.leaflet-map {
-  @apply w-full h-full;
-}
-
-.popup-content {
-  @apply p-2;
-}
-</style>
 
