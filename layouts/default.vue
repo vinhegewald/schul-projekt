@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen flex flex-col">
     <GenericSidebar />
-    <main class="flex-1 p4">
+    <main class="flex-1 p4 mt-[117px]">
       <slot />
     </main>
     <LandingFooter />
