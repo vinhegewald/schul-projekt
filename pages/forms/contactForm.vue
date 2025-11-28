@@ -1,13 +1,6 @@
 <!--<script setup lang="ts">-->
-<script>
+<script setup lang="ts">
 import ContactForm from '~/components/forms/contactForm.vue';
-
-export default {
-  name: 'ContactFormPage',
-  components: {
-    ContactForm,
-  },
-};
 </script>
 <template>
   <div>
