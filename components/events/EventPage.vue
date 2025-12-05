@@ -46,8 +46,6 @@
       </ClientOnly>
     </section>
 
-    <!-- Footer -->
-    <LandingFooter />
   </div>
 </template>
 
