@@ -42,11 +42,12 @@
               <h2 class="text-xl font-semibold">{{ product.name }}</h2>
               <p class="text-md">{{ product.description }}</p>
             </div>
-            <button
-              class="bg-[#c9c4bb] hover:bg-[#d3cec5] transition-all rounded-md border border-[#b8b3aa] px-4 py-2"
+            <NuxtLink
+                :to="`/produkte/${product.slug}`"
+                class="bg-[#c9c4bb] hover:bg-[#d3cec5] transition-all rounded-md border border-[#b8b3aa] px-4 py-2"
             >
               Mehr erfahren...
-            </button>
+            </NuxtLink>
           </div>
         </div>
       </div>
@@ -55,84 +56,31 @@
 </template>
 
 <script setup lang="ts">
+import { ref, onMounted, watch } from "vue";
 import { generateFuzzyRegexPatterns } from "@/utils/fuzzySearch";
+import productsData from "@/data/products.json";
 
 interface Product {
   name: string;
   description: string;
   image: string;
+  slug: string;
+}
+
+interface Category {
+  category: string;
+  products: Product[];
 }
 
 const searchParams = ref("");
 const sortOption = ref("default");
-const products: Ref<Product[] | null> = ref(null);
 
-const adjectives = [
-  "Elegant",
-  "Robust",
-  "Smart",
-  "Eco",
-  "Premium",
-  "Compact",
-  "Ultra",
-  "Dynamic",
-  "Silent",
-  "Bright",
-  "Versa",
-  "Quantum",
-  "Aero",
-  "Fusion",
-  "Nova",
-  "Pulse",
-  "Crystal",
-  "Magnetic",
-  "Sonic",
-  "Titan",
-  "Aqua",
-  "Hyper",
-  "Prime",
-  "Zen",
-  "Next",
-];
+// flat product list for display
+const products = ref<Product[]>([]);
 
-const nouns = [
-  "Speaker",
-  "Lamp",
-  "Chair",
-  "Table",
-  "Bottle",
-  "Watch",
-  "Router",
-  "Keyboard",
-  "Mouse",
-  "Backpack",
-  "Camera",
-  "Drone",
-  "Phone",
-  "Headset",
-  "Monitor",
-  "Fan",
-  "Controller",
-  "Pen",
-  "Notebook",
-  "Light",
-  "Display",
-  "Sensor",
-  "Scale",
-  "Blender",
-  "Filter",
-];
-
-const allProducts: Product[] = Array.from({ length: 10 }, (_, i) => {
-  const adj = adjectives[i % adjectives.length];
-  const noun = nouns[(i * 3) % nouns.length];
-  const name = `${adj} ${noun}`;
-  return {
-    name,
-    description: `Das ${name} ist ein hochwertiges Produkt, das für Stil und Leistung steht.`,
-    image: `/images/products/1.png`,
-  };
-});
+// load & flatten JSON
+const allProducts: Product[] = productsData
+    .flatMap((cat: Category) => cat.products);
 
 onMounted(() => {
   applyFiltersAndSorting();
@@ -143,15 +91,13 @@ watch([searchParams, sortOption], () => {
 });
 
 function applyFiltersAndSorting() {
-  const fuzzyRegex = generateFuzzyRegexPatterns(
-    searchParams.value.toLowerCase()
-  );
-  const searchRegex = new RegExp(fuzzyRegex);
+  const search = searchParams.value.trim().toLowerCase();
+  const regex = new RegExp(generateFuzzyRegexPatterns(search));
 
-  const filtered = allProducts.filter((product: Product) => {
+  const filtered = allProducts.filter(product => {
     return (
-      searchRegex.test(product.name.toLowerCase()) ||
-      searchRegex.test(product.description.toLowerCase())
+        regex.test(product.name.toLowerCase()) ||
+        regex.test(product.description.toLowerCase())
     );
   });
 

@@ -1,0 +1,76 @@
+[
+  {
+    "category": "Spiele",
+    "products": [
+      {
+        "name": "Dynamic Controller",
+        "slug": "dynamic-controller",
+        "description": "Der Dynamic Controller sorgt für präzise Steuerung und maximalen Spielspaß.",
+        "image": "/images/products/1.png"
+      },
+      {
+        "name": "Ultra Drone",
+        "slug": "ultra-drone",
+        "description": "Die Ultra Drone bietet spannende Flugmanöver für jedes Spiellevel.",
+        "image": "/images/products/1.png"
+      }
+    ]
+  },
+  {
+    "category": "Deko",
+    "products": [
+      {
+        "name": "Elegant Lamp",
+        "slug": "elegant-lamp",
+        "description": "Die Elegant Lamp setzt stilvolle Akzente und sorgt für warme Beleuchtung.",
+        "image": "/images/products/1.png"
+      },
+      {
+        "name": "Crystal Light",
+        "slug": "crystal-light",
+        "description": "Das Crystal Light verleiht jedem Raum eine moderne Ästhetik.",
+        "image": "/images/products/1.png"
+      }
+    ]
+  },
+  {
+    "category": "Pokale",
+    "products": [
+      {
+        "name": "Prime Trophy",
+        "slug": "prime-trophy",
+        "description": "Der Prime Trophy-Pokal steht für höchste Leistungen und edles Design.",
+        "image": "/images/products/1.png"
+      },
+      {
+        "name": "Titan Award",
+        "slug": "titan-award",
+        "description": "Der Titan Award symbolisiert Stärke und Erfolg.",
+        "image": "/images/products/1.png"
+      }
+    ]
+  },
+  {
+    "category": "Alltagshelfer",
+    "products": [
+      {
+        "name": "Smart Watch",
+        "slug": "smart-watch",
+        "description": "Die Smart Watch unterstützt deinen Alltag mit smarten Funktionen.",
+        "image": "/images/products/1.png"
+      },
+      {
+        "name": "Eco Bottle",
+        "slug": "eco-bottle",
+        "description": "Die Eco Bottle ist langlebig, stilvoll und ideal für unterwegs.",
+        "image": "/images/products/1.png"
+      },
+      {
+        "name": "Compact Backpack",
+        "slug": "compact-backpack",
+        "description": "Der Compact Backpack ist perfekt für Schule, Arbeit und Freizeit.",
+        "image": "/images/products/1.png"
+      }
+    ]
+  }
+]

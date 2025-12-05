@@ -57,13 +57,13 @@
     >
       <template v-for="(item, index) in menuItems" :key="index">
         <!-- Einfacher Link ohne Unterkategorien -->
-        <a
+        <NuxtLink
           v-if="!item.children"
-          :href="item.href"
+          :to="item.href"
           class="font-medium hover:underline"
         >
           {{ item.label }}
-        </a>
+        </NuxtLink>
 
         <!-- Kategorie mit Dropdown -->
         <div v-else class="flex flex-col gap-2">
@@ -93,14 +93,14 @@
             v-if="openCategories[getCategoryId(item.label)]"
             class="flex flex-col gap-2 pl-4 border-l-2 border-[#BCB5AA]"
           >
-            <a
+            <NuxtLink
               v-for="(child, childIndex) in item.children"
               :key="childIndex"
-              :href="child.href"
+              :to="child.href"
               class="text-sm hover:underline"
             >
               {{ child.label }}
-            </a>
+            </NuxtLink>
           </div>
         </div>
       </template>
@@ -135,10 +135,10 @@ const props = withDefaults(defineProps<NavbarProps>(), {
       label: "Produkte",
       children: [
         { label: "Alle Produkte", href: "/produkte/" },
-        { label: "Spiele", href: "/produkte/spiele" },
-        { label: "Deko", href: "/produkte/deko" },
-        { label: "Pokale", href: "/produkte/pokale" },
-        { label: "Alltagshelfer", href: "/produkte/alltagshelfer" },
+        { label: "Spiele", href: "/produkte/kategorie/spiele" },
+        { label: "Deko", href: "/produkte/kategorie/deko" },
+        { label: "Pokale", href: "/produkte/kategorie/pokale" },
+        { label: "Alltagshelfer", href: "/produkte/kategorie/alltagshelfer" },
       ],
     },
     {
