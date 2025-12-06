@@ -132,6 +132,10 @@ const props = withDefaults(defineProps<NavbarProps>(), {
       href: "/",
     },
     {
+      label: "Kontakt",
+      href: "/forms/contactForm",
+    },
+    {
       label: "Produkte",
       children: [
         { label: "Alle Produkte", href: "/produkte/" },
