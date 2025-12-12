@@ -140,7 +140,7 @@ const salutationOptions = ['Frau', 'Herr', 'Keine Angabe'];
               v-model="formData.datenschutz"
               type="checkbox"
               id="datenschutz"
-              required class="h-4 w-4 cursor-pointer"
+              required class="mt-1 h-4 w-4 cursor-pointer"
               style="accent-color: #8B8589;">
           <label for="datenschutz" class="text-sm text-gray-800 cursor-pointer leading-tight">
             Ich habe die
