@@ -2,7 +2,7 @@
   <div class="event-page">
     <!-- Hero Section with Image and Overlay Text -->
     <section
-      class="hero-section relative h-[500px] mt-[117px] bg-cover bg-center bg-no-repeat flex items-start justify-start"
+      class="hero-section relative h-[500px] bg-cover bg-center bg-no-repeat flex items-start justify-start"
       :style="{ backgroundImage: `url(${headerImage})` }"
     >
       <div class="hero-overlay absolute inset-0 bg-gradient-to-r from-cyan-500/70 to-transparent"></div>
