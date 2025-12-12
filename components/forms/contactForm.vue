@@ -51,22 +51,18 @@ const salutationOptions = ['Frau', 'Herr', 'Keine Angabe'];
 
 <template>
   <div class="min-h-screen flex items-center justify-center p-4" style="background-color: #C8C4BE;">
-    <div class="p-8 rounded" style="width:500px; height: 600px; background-color: #DEDAD5; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+    <div class="p-4 sm:p-6 md:p-8 rounded max-w-lg w-full bg-[#DEDAD5] shadow-lg mx-auto">
       <!--Anrede-->
-      <div class="mb-10" style="margin-left: 50px; margin-right: 50px;">
-        <label class="block text-gray-800 text-base mb-2">
-          <br>
-          </br>
+      <div class="mb-6 sm:mb-8 md:md-10 mx-4 sm:mx-6 md:mx-8 lg:mx-12">
+        <label class="block text-gray-800 text-sm sm:text-base mb-2">
+
           Anrede <span class="text-red-800">*</span>
         </label>
-        <br>
-        </br>
 
         <div class="relative">
           <select
               v-model="formData.anrede"
-              required class="px-4 py-3 rounded appearance-none cursor-pointer text-gray-1000"
-              style="width:400px; background-color: #E8E4DF; border: none; outline: none;"
+              required class="px-4 py-3 rounded  text-gray-800 w-full bg-[#E8E4DF] border-none outline-none focus:ring-2 focus:ring-[#8B8589]"
           >
             <!--<option value="">Bitte auswählen</option>-->
             <option v-for="opt in salutationOptions" :key="opt" :value="opt">{{opt}}</option>
@@ -75,124 +71,105 @@ const salutationOptions = ['Frau', 'Herr', 'Keine Angabe'];
         </div>
       </div>
       <!--Vorname-->
-      <div class="mb-10" style="margin-left: 50px; margin-right: 50px;">
-        <label class="block text-gray-800 text-base mb-2">
-          <br>
-          </br>
+      <div class="mb-6 sm:mb-8 md:md-10 mx-4 sm:mx-6 md:mx-8 lg:mx-12">
+        <label class="block text-gray-800 text-sm sm:text-base mb-2">
+
           Vorname <span class="text-red-800">*</span>
         </label>
-        <br>
-        </br>
+
         <div class="relative">
           <input
               v-model="formData.vorname"
               type="text"
-              required class="px-4 py-3 rounded appearance-none cursor-pointer text-gray-800"
-              style="width: 400px; background-color: #E8E4DF; border: none; outline: none;">
-          </input>
+              required class="px-4 py-3 rounded appearance-none cursor-pointer text-gray-800 w-full bg-[#E8E4DF] border-none outline-none focus:ring-2 focus:ring-[#8B8589]"
+          >
+
         </div>
       </div>
       <!--Nachname-->
-      <div class="mb-10" style="margin-left: 50px; margin-right: 50px;">
-        <label class="block text-gray-800 text-base mb-2">
-          <br>
-          </br>
+      <div class="mb-6 sm:mb-8 md:mb-10 mx-4 sm:mx-6 md:mx-8 lg:mx-12">
+        <label class="block text-gray-800 text-sm sm:text-base mb-2">
+
           Nachname <span class="text-red-800">*</span>
         </label>
-        <br>
-        </br>
+
         <div class="relative">
           <input
               v-model="formData.nachname"
               type="text"
-              required class="px-4 py-3 rounded appearance-none cursor-pointer text-gray-800"
-              style="width: 400px; background-color: #E8E4DF; border: none; outline: none;">
-          </input>
+              required class="px-4 py-3 rounded appearance-none cursor-pointer text-gray-800 w-full bg-[#E8E4DF] border-none outline-none focus:ring-2 focus:ring-[#8B8589]"
+          >
+
         </div>
       </div>
       <!--E-Mail-->
-      <div class="mb-10" style="margin-left: 50px; margin-right: 50px;">
-        <label class="block text-gray-800 text-base mb-2">
-          <br>
-          </br>
+      <div class="mb-6 sm:mb-8 md:mb-10 mx-4 sm:mx-6 md:mx-8 lg:mx-12">
+        <label class="block text-gray-800 text-sm sm:text-base mb-2">
+
           E-Mail <span class="text-red-800">*</span>
         </label>
-        <br>
-        </br>
+
         <div class="relative">
           <input
               v-model="formData.email"
               type="email"
-              required class="px-4 py-3 rounded appearance-none cursor-pointer text-gray-800"
-              style="width: 400px; background-color: #E8E4DF; border: none; outline: none;">
-          </input>
+              required class="px-4 py-3 rounded appearance-none cursor-pointer text-gray-800 w-full bg-[#E8E4DF] border-none outline-none focus:ring-2 focus:ring-[#8B8589]"
+          >
+
         </div>
       </div>
       <!--Telefon (optional)-->
-      <div class="mb-10" style="margin-left: 50px; margin-right: 50px;">
-        <label class="block text-gray-800 text-base mb-2">
-          <br>
-          </br>
+      <div class="mb-6 sm:mb-8 md:mb-10 mx-4 sm:mx-6 md:mx-8 lg:mx-12">
+        <label class="block text-gray-800 text-sm sm:text-base mb-2">
+
           Telefon <span class="text-gray-800 text-sm">(optional)</span>
         </label>
-        <br>
-        </br>
+
         <div class="relative">
           <input
               v-model="formData.telefon"
               type="tel"
-              required class="px-4 py-3 rounded appearance-none cursor-pointer text-gray-800"
-              style="width: 400px; background-color: #E8E4DF; border: none; outline: none;">
+              required class="px-4 py-3 rounded appearance-none cursor-pointer text-gray-800 w-full bg-[#E8E4DF] border-none outline-none focus:ring-2 focus:ring-[#8B8589]"
+          >
 
-          </input>
         </div>
       </div>
       <!--Kommentar-->
-      <div class="mb-20" style="margin-left: 50px; margin-right: 50px;">
-        <label class="block text-gray-800 text-base mb-2">
-          <br>
-          </br>
+      <div class="mb-6 sm:mb-8 md:mb-10 mx-4 sm:mx-6 md:mx-8 lg:mx-12">
+        <label class="block text-gray-800 text-sm sm:text-base mb-2">
+
           Kommentar <span class="text-red-800">*</span>
         </label>
-        <br>
-        </br>
+
         <div class="relative">
           <textarea
               v-model="formData.kommentar"
               required
-              rows="5"
-              class="px-4 py-3 rounded appearance-none cursor-pointer text-gray-800"
-              style="width: 400px; background-color: #E8E4DF; border: none; outline: none;">
+              rows="3"
+              class="px-4 py-3 rounded appearance-none cursor-pointer text-gray-800 w-full max-w-md bg-[#E8E4DF] border-none outline-none focus:ring-2 focus:ring-[#8B8589] resize-none"
+          >
           </textarea>
         </div>
       </div>
       <!--Datenschutz-->
-      <div class="flex items-center justify-between gap-4" style="margin-left: 50px; margin-right: 50px;">
-        <div class="flex items-start-gap-2">
-          <br>
-          </br>
+      <div class="flex flex-col items-start gap-3 mx-4 sm:mx-6 md:mx-8 lg:mx-12 mb-6">
+        <div class="flex items-start-gap-3">
           <input
               v-model="formData.datenschutz"
               type="checkbox"
               id="datenschutz"
               required class="mt-1 h-4 w-4 cursor-pointer"
               style="accent-color: #8B8589;">
-          </input>
           <label for="datenschutz" class="text-sm text-gray-800 cursor-pointer leading-tight">
             Ich habe die
             <a href="#" class="text-blue-800 hover:underline">Datenschutzbestimmungen</a>
             gelesen
           </label>
         </div>
-        <br>
-        </br>
-        <div class="relative">
-        </div>
       </div>
       <!--Button-->
-      <div class="text-left" style="margin-left: 400px;">
-
-        <button @click="handleSubmit" type="submit" class="w-full sm:w-auto bg-white border-10 border-stone-800 text-stone-8000 font-medium px-16 py-12 rounded-lg transition duration-800 shadow-sm hover:shadow-md hover:bg-stone-500 active:bg-stone-1000 flex-shrink-0"
+      <div class="text-center sm:text-right mx-4 sm:mx-6 md:mx-8 lg:mx-12">
+        <button @click="handleSubmit" type="submit" class="w-full sm:w-auto bg-white border border-stone-800 text-stone-8000 font-medium px-6 py-3 sm:px-8 sm:py-3 md:px-10 md:py-3 rounded-lg transition duration-300 shadow-sm hover:shadow-md hover:bg-stone-100 active:bg-stone-200"
         >
           Senden
         </button>
@@ -201,7 +178,8 @@ const salutationOptions = ['Frau', 'Herr', 'Keine Angabe'];
   </div>
 </template>
 
-<!-- <style scoped>
+
+<style scoped>
 /* Remove default select arrow in IE */
 select::-ms-expand {
   display: none;
@@ -209,10 +187,10 @@ select::-ms-expand {
 
 /* Focus states */
 input:focus, select:focus, textarea:focus {
-  box-shadow: 0 0 0 2px rgba(139, 133, 128, 0.3);
+  box-shadow: 0 0 0 2px rgba(139, 133, 137, 0.3);
 }
 
-/* Checkbox styling for better cross-browser support
+Checkbox styling for better cross-browser support
 input[type="checkbox"] {
   -webkit-appearance: none;
   appearance: none;
@@ -225,7 +203,7 @@ input[type="checkbox"] {
   flex-shrink: 0;
 }
 
- */
+
 
 input[type="checkbox"]:checked {
   background-color: #8B8580;
@@ -244,4 +222,3 @@ input[type="checkbox"]:checked::after {
   transform: rotate(45deg);
 }
 </style>
--->
