@@ -6,7 +6,6 @@ interface FormData {
   vorname: string;
   nachname: string;
   email: string;
-  telefon: string;
   kommentar: string;
   datenschutz: boolean;
 }
@@ -16,7 +15,6 @@ const formData = ref<FormData>({
   vorname: '',
   nachname: '',
   email: '',
-  telefon: '',
   kommentar: '',
   datenschutz: false,
 });
@@ -42,7 +40,7 @@ const handleSubmit = () => {
 const resetForm = () => {
   formData.value = {
     anrede: '', vorname: '', nachname: '', email: '',
-    telefon: '', kommentar: '', datenschutz: false,
+    kommentar: '', datenschutz: false,
   };
 };
 
@@ -118,22 +116,6 @@ const salutationOptions = ['Frau', 'Herr', 'Keine Angabe'];
 
         </div>
       </div>
-      <!--Telefon (optional)-->
-      <div class="mb-6 sm:mb-8 md:mb-10 mx-4 sm:mx-6 md:mx-8 lg:mx-12">
-        <label class="block text-gray-800 text-sm sm:text-base mb-2">
-
-          Telefon <span class="text-gray-800 text-sm">(optional)</span>
-        </label>
-
-        <div class="relative">
-          <input
-              v-model="formData.telefon"
-              type="tel"
-              required class="px-4 py-3 rounded appearance-none cursor-pointer text-gray-800 w-full bg-[#E8E4DF] border-none outline-none focus:ring-2 focus:ring-[#8B8589]"
-          >
-
-        </div>
-      </div>
       <!--Kommentar-->
       <div class="mb-6 sm:mb-8 md:mb-10 mx-4 sm:mx-6 md:mx-8 lg:mx-12">
         <label class="block text-gray-800 text-sm sm:text-base mb-2">
@@ -153,7 +135,7 @@ const salutationOptions = ['Frau', 'Herr', 'Keine Angabe'];
       </div>
       <!--Datenschutz-->
       <div class="flex flex-col items-start gap-3 mx-4 sm:mx-6 md:mx-8 lg:mx-12 mb-6">
-        <div class="flex items-start-gap-3">
+        <div class="flex items-start space-x-4">
           <input
               v-model="formData.datenschutz"
               type="checkbox"
