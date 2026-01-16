@@ -12,14 +12,11 @@
 
         <!-- Links -->
         <div class="flex gap-8 md:absolute md:left-1/2 md:-translate-x-1/2">
-          <NuxtLink to="/link1" class="text-gray-400 hover:text-white transition">
-            Link 1
+          <NuxtLink to="/impressum" class="text-gray-400 hover:text-white transition">
+            Impressum
           </NuxtLink>
-          <NuxtLink to="/link2" class="text-gray-400 hover:text-white transition">
-            Link 2
-          </NuxtLink>
-          <NuxtLink to="/link3" class="text-gray-400 hover:text-white transition">
-            Link 3
+          <NuxtLink to="/datenschutz" class="text-gray-400 hover:text-white transition">
+            Datenschutz
           </NuxtLink>
         </div>
       </div>
