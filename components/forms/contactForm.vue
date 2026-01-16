@@ -116,11 +116,11 @@ const salutationOptions = ['Frau', 'Herr', 'Keine Angabe'];
 
         </div>
       </div>
-      <!--Kommentar-->
+      <!--Kommentar als Nachricht-->
       <div class="mb-6 sm:mb-8 md:mb-10 mx-4 sm:mx-6 md:mx-8 lg:mx-12">
         <label class="block text-gray-800 text-sm sm:text-base mb-2">
 
-          Kommentar <span class="text-red-800">*</span>
+          Nachricht <span class="text-red-800">*</span>
         </label>
 
         <div class="relative">
@@ -145,7 +145,7 @@ const salutationOptions = ['Frau', 'Herr', 'Keine Angabe'];
           <label for="datenschutz" class="text-sm text-gray-800 cursor-pointer leading-tight">
             Ich habe die
             <a href="#" class="text-blue-800 hover:underline">Datenschutzbestimmungen</a>
-            gelesen
+            gelesen <span class="text-red-800">*</span>
           </label>
         </div>
       </div>
