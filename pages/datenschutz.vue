@@ -27,8 +27,16 @@ const sections = [
   {
     heading: "3. Datenerfassung auf dieser Website",
     paragraphs: [
-      "Diese Website erfasst keine personenbezogenen Daten. Wir verwenden keine Cookies, keine Analyse-Tools und keine Tracking-Dienste.",
+      "Für die Bearbeitung von Kontaktanfragen verarbeiten wir Ihre E-Mail-Adresse sowie Ihren Vor- und Nachnamen. Zur Übermittlung Ihrer Nachrichten nutzen wir den Dienst EmailJS, an den diese Daten weitergegeben werden. Wir setzen keine Cookies, Analyse-Tools oder Tracking-Dienste ein.",
       "Beim Besuch der Website werden automatisch technische Informationen durch Ihren Browser an unseren Server übermittelt. Diese Daten werden ausschließlich zur technischen Bereitstellung der Website verwendet und nicht gespeichert oder ausgewertet.",
+      "Der Provider der Seiten erhebt und speichert automatisch Informationen in sogenannten Server-Log-Dateien, die Ihr Browser automatisch an uns übermittelt. Dies sind:",
+      "• Browsertyp und Browserversion",
+      "• Verwendetes Betriebssystem",
+      "• Referrer URL",
+      "• Hostname des zugreifenden Rechners",
+      "• Uhrzeit der Serveranfrage",
+      "• IP-Adresse",
+      "Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen. Die Erfassung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Der Websitebetreiber hat ein berechtigtes Interesse an der technisch fehlerfreien Darstellung und der Optimierung seiner Website.",
     ],
   },
   {
@@ -41,20 +49,7 @@ const sections = [
     ],
   },
   {
-    heading: "5. Server-Log-Dateien",
-    paragraphs: [
-      "Der Provider der Seiten erhebt und speichert automatisch Informationen in sogenannten Server-Log-Dateien, die Ihr Browser automatisch an uns übermittelt. Dies sind:",
-      "• Browsertyp und Browserversion",
-      "• Verwendetes Betriebssystem",
-      "• Referrer URL",
-      "• Hostname des zugreifenden Rechners",
-      "• Uhrzeit der Serveranfrage",
-      "• IP-Adresse",
-      "Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen. Die Erfassung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Der Websitebetreiber hat ein berechtigtes Interesse an der technisch fehlerfreien Darstellung und der Optimierung seiner Website.",
-    ],
-  },
-  {
-    heading: "6. OpenStreetMap",
+    heading: "5. OpenStreetMap",
     paragraphs: [
       "Wir nutzen den Kartendienst OpenStreetMap (OSM). Anbieter ist die OpenStreetMap Foundation, St John's Innovation Centre, Cowley Road, Cambridge, CB4 0WS, United Kingdom.",
       "Wenn Sie eine Seite mit eingebetteter OpenStreetMap-Karte aufrufen, wird eine Verbindung zu den Servern von OpenStreetMap hergestellt. Dabei können Daten wie Ihre IP-Adresse an OpenStreetMap übertragen werden.",
@@ -63,7 +58,7 @@ const sections = [
     ],
   },
   {
-    heading: "7. Ihre Rechte als betroffene Person",
+    heading: "6. Ihre Rechte als betroffene Person",
     paragraphs: [
       "Sie haben folgende Rechte:",
       "• Recht auf Auskunft (Art. 15 DSGVO): Sie haben das Recht, Auskunft über Ihre von uns verarbeiteten personenbezogenen Daten zu verlangen.",
@@ -78,14 +73,14 @@ const sections = [
     ],
   },
   {
-    heading: "8. Externe Links",
+    heading: "7. Externe Links",
     paragraphs: [
       "Diese Website enthält Links zu externen Websites Dritter (z.B. Google Maps), auf deren Inhalte wir keinen Einfluss haben. Beim Klick auf externe Links werden Sie auf die jeweilige Website weitergeleitet und es gelten die Datenschutzbestimmungen des jeweiligen Anbieters.",
       "Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.",
     ],
   },
   {
-    heading: "9. Änderungen der Datenschutzerklärung",
+    heading: "8. Änderungen der Datenschutzerklärung",
     paragraphs: [
       "Wir behalten uns vor, diese Datenschutzerklärung anzupassen, damit sie stets den aktuellen rechtlichen Anforderungen entspricht oder um Änderungen unserer Leistungen in der Datenschutzerklärung umzusetzen.",
       "Stand: Dezember 2025",
