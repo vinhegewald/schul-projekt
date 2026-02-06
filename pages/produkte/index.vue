@@ -36,15 +36,15 @@
           :key="product.name"
           class="bg-[#DFDAD1] w-[370px] rounded-md border border-[#C1BBB1]"
         >
-          <img :src="product.image" class="w-full" />
+          <img :src="product.image" class="w-full h-52 object-cover" />
           <div class="flex flex-col gap-12 p-4">
             <div>
               <h2 class="text-xl font-semibold">{{ product.name }}</h2>
               <p class="text-md">{{ product.description }}</p>
             </div>
             <NuxtLink
-                :to="`/produkte/${product.slug}`"
-                class="bg-[#c9c4bb] hover:bg-[#d3cec5] transition-all rounded-md border border-[#b8b3aa] px-4 py-2"
+              :to="`/produkte/${product.slug}`"
+              class="bg-[#c9c4bb] hover:bg-[#d3cec5] transition-all rounded-md border border-[#b8b3aa] px-4 py-2"
             >
               Mehr erfahren...
             </NuxtLink>
@@ -79,8 +79,9 @@ const sortOption = ref("default");
 const products = ref<Product[]>([]);
 
 // load & flatten JSON
-const allProducts: Product[] = productsData
-    .flatMap((cat: Category) => cat.products);
+const allProducts: Product[] = productsData.flatMap(
+  (cat: Category) => cat.products,
+);
 
 onMounted(() => {
   applyFiltersAndSorting();
@@ -94,10 +95,10 @@ function applyFiltersAndSorting() {
   const search = searchParams.value.trim().toLowerCase();
   const regex = new RegExp(generateFuzzyRegexPatterns(search));
 
-  const filtered = allProducts.filter(product => {
+  const filtered = allProducts.filter((product) => {
     return (
-        regex.test(product.name.toLowerCase()) ||
-        regex.test(product.description.toLowerCase())
+      regex.test(product.name.toLowerCase()) ||
+      regex.test(product.description.toLowerCase())
     );
   });
 
