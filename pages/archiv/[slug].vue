@@ -10,6 +10,13 @@ const article = await loadBySlug(route.params.slug as string)
 if (!article) {
   throw createError({ statusCode: 404, message: 'Article not found' })
 }
+
+useSeoMeta({
+  title: article.title,
+  ogTitle: article.title,
+  description: article.description,
+  ogDescription: article.description,
+})
 </script>
 
 <template>

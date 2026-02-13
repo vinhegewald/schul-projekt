@@ -55,6 +55,17 @@ function navigateBack() {
   router.back()
 }
 
+const config = useRuntimeConfig()
+const baseUrl = config.public.siteUrl
+
+useSeoMeta({
+  title: computed(() => product?.value?.name ?? "Products"),
+  ogTitle: computed(() => product?.value?.name ?? "Products"),
+  description: 'Produkte von Print4Future',
+  ogDescription: 'Produkte von Print4Future',
+  ogImage: `${baseUrl}/image.png`,
+})
+
 if (!product.value) {
   throw createError({ statusCode: 404, statusMessage: "Produkt nicht gefunden" });
 }

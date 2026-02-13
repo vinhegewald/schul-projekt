@@ -31,5 +31,12 @@ const eventLocation = {
 defineOptions({
   name: 'WirtschaftsLiveMessePage',
 });
+
+useSeoMeta({
+  title: "Wirtschafts Live Messe",
+  ogTitle: "Wirtschafts Live Messe",
+  description: "Wirtschafts Live Messe",
+  ogDescription: "Wirtschafts Live Messe",
+})
 </script>
 
