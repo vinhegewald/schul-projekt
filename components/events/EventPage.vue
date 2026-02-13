@@ -4,6 +4,8 @@
     <section
       class="hero-section relative h-[500px] bg-cover bg-center bg-no-repeat flex items-start justify-start"
       :style="{ backgroundImage: `url(${headerImage})` }"
+      role="img"
+      :aria-label="headerImageAlt"
     >
       <!-- <div class="hero-overlay absolute inset-0 bg-gradient-to-r from-cyan-500/70 to-transparent"></div> -->
       
@@ -63,6 +65,7 @@ interface EventPageProps {
   title: string;
   subtitle: string;
   headerImage: string;
+  headerImageAlt: string;
   contentHeader: string;
   description: string | string[];
   location?: Location;
