@@ -110,4 +110,14 @@ function applyFiltersAndSorting() {
 
   products.value = filtered;
 }
+
+const config = useRuntimeConfig()
+const baseUrl = config.public.siteUrl
+useSeoMeta({
+  title: 'Produkte',
+  ogTitle: 'Produkte',
+  description: 'Produkte von Print4Future',
+  ogDescription: 'Produkte von Print4Future',
+  ogImage: `${baseUrl}/image.png`,
+})
 </script>

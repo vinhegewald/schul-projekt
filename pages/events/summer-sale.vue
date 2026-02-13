@@ -29,5 +29,11 @@ const eventLocation = {
 defineOptions({
   name: 'SummerSalePage',
 });
+useSeoMeta({
+  title: "Summer Sale",
+  ogTitle: "Summer Sale",
+  description: "Summer Sale",
+  ogDescription: "Summer Sale",
+})
 </script>
 

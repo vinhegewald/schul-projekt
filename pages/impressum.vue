@@ -21,4 +21,11 @@ const sections = [
   },
   // Add more sections as needed
 ];
+
+useSeoMeta({
+  title: "Impressum",
+  ogTitle: "Impressum",
+  description: "Impressum",
+  ogDescription: "Impressum",
+})
 </script>

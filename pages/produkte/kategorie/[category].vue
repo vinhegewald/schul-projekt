@@ -37,6 +37,17 @@ if (!category) {
     statusMessage: "Kategorie nicht gefunden",
   });
 }
+
+const config = useRuntimeConfig()
+const baseUrl = config.public.siteUrl
+
+useSeoMeta({
+  title: category.category,
+  ogTitle: category.category,
+  description: 'Produkte von Print4Future',
+  ogDescription: 'Produkte von Print4Future',
+  ogImage: `${baseUrl}/image.png`,
+})
 </script>
 
 <template>
