@@ -7,7 +7,7 @@
       <h1 class="text-4xl font-bold mb-6">{{ product.name }}</h1>
 
       <div v-if="product.image" class="mb-6">
-        <img :src="product.image" class="w-full h-auto rounded-xl shadow" />
+        <img :src="product.image" :alt="product.alt" class="w-full h-auto rounded-xl shadow" />
       </div>
 
       <p class="text-neutral-600 mb-3">
@@ -33,6 +33,7 @@ interface Product {
   name: string;
   slug: string;
   description: string;
+  alt: string;
   image: string;
 }
 

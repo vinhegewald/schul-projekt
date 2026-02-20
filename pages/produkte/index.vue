@@ -36,7 +36,7 @@
           :key="product.name"
           class="bg-[#DFDAD1] w-[370px] rounded-md border border-[#C1BBB1]"
         >
-          <img :src="product.image" class="w-full h-52 object-cover" />
+          <img :src="product.image" :alt="product.alt" class="w-full h-52 object-cover" />
           <div class="flex flex-col gap-12 p-4">
             <div>
               <h2 class="text-xl font-semibold">{{ product.name }}</h2>
@@ -64,6 +64,7 @@ interface Product {
   name: string;
   description: string;
   image: string;
+  alt: string;
   slug: string;
 }
 

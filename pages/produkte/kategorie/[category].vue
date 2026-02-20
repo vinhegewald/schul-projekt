@@ -5,6 +5,7 @@ interface Product {
   name: string;
   slug: string;
   description: string;
+  alt: string;
   image: string;
 }
 
@@ -66,6 +67,7 @@ useSeoMeta({
       >
         <img
           :src="product.image"
+          :alt="product.alt"
           class="w-full rounded-t-md object-cover h-52"
         />
         <div class="flex flex-col gap-4 p-4">
