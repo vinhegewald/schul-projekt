@@ -11,6 +11,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxtjs/tailwindcss'
   ],
+
   app: {
     head: {
       link: [
@@ -18,4 +19,15 @@ export default defineNuxtConfig({
       ],
     },
   },
+
+
+  typescript: {
+    strict: true,
+    tsConfig: {
+      compilerOptions: {
+        module: 'esnext',   
+        target: 'esnext'
+      }
+    }
+  }
 })
