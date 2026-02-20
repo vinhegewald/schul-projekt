@@ -6,43 +6,50 @@
         "name": "Vogelhaus",
         "slug": "vogelhaus",
         "description": "Dekoratives Vogelhaus aus Holz – ein natürlicher Blickfang für Garten oder Zuhause.",
-        "image": "/images/products/8.jpeg"
+        "image": "/images/products/8.jpeg",
+        "alt": "Dekoratives Vogelhaus aus Holz"
       },
       {
         "name": "Holz Truhe",
         "slug": "holz-truhe",
         "description": "Rustikale Holztruhe zur stilvollen Aufbewahrung kleiner Gegenstände.",
-        "image": "/images/products/1.jpeg"
+        "image": "/images/products/1.jpeg",
+        "alt": "Rustikale Holztruhe"
       },
       {
         "name": "Holz Bilderrahmen",
         "slug": "holz-bilderrahmen",
         "description": "Schlichter Holzrahmen, der Fotos warm und natürlich in Szene setzt.",
-        "image": "/images/products/2.jpeg"
+        "image": "/images/products/2.jpeg",
+        "alt": "Schlichter Holzrahmen für Fotos"
       },
       {
         "name": "Holz Regal",
         "slug": "holz-regal",
         "description": "Kompaktes Holzregal für Deko, Pflanzen oder kleine Alltagsgegenstände.",
-        "image": "/images/products/3.jpeg"
+        "image": "/images/products/3.jpeg",
+        "alt": "Kompaktes Holzregal"
       },
       {
         "name": "Lego Schlüsselanhänger",
         "slug": "lego-schluesselanhaenger",
         "description": "Kreativer Schlüsselanhänger im Lego-Design – klein, verspielt und praktisch.",
-        "image": "/images/products/5.jpeg"
+        "image": "/images/products/5.jpeg",
+        "alt": "Kreativer Schlüsselanhänger im Lego-Design"
       },
       {
         "name": "Lego Herzen",
         "slug": "lego-herzen",
         "description": "Liebevolle Dekoherzen im Lego-Stil – ideal als kleines Geschenk.",
-        "image": "/images/products/6.jpeg"
+        "image": "/images/products/6.jpeg",
+        "alt": "Dekoherzen im Lego-Stil"
       },
       {
         "name": "Holz Schlüsselkasten Vogel Design",
         "slug": "holz-schluesselkasten-vogel",
         "description": "Dekorativer Schlüsselkasten aus Holz im Vogel-Design für mehr Ordnung im Flur.",
-        "image": "/images/products/7.jpeg"
+        "image": "/images/products/7.jpeg",
+        "alt": "Dekorativer Schlüsselkasten aus Holz im Vogel-Design"
       }
     ]
   },
@@ -53,7 +60,8 @@
         "name": "Holz Wasserwaage",
         "slug": "holz-wasserwaage",
         "description": "Klassische Wasserwaage aus Holz – funktional und robust für präzises Arbeiten.",
-        "image": "/images/products/4.jpeg"
+        "image": "/images/products/4.jpeg",
+        "alt": "Klassische Wasserwaage aus Holz"
       }
     ]
   }
