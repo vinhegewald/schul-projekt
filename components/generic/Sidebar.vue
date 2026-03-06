@@ -54,7 +54,7 @@
       ]"
     >
       <div class="flex flex-col gap-4 overflow-y-auto pr-2">
-        <template v-for="(item, index) in menuItems" :key="index">
+        <template v-for="(item, index) in localizedMenuItems" :key="index">
           <NuxtLink
             v-if="!item.children"
             :to="item.href"
@@ -112,7 +112,17 @@
 </template>
 
 <script setup lang="ts">
+import { computed, ref, reactive } from "vue";
+import { useLanguage } from "@/composables/useLanguage";
+import productsData from "@/data/products.json";
+
 defineOptions({ name: "GenericNavbar" });
+
+interface Category {
+  category: string;
+  categoryEn: string;
+  slug: string;
+}
 
 interface MenuItem {
   label: string;
@@ -124,44 +134,63 @@ interface NavbarProps {
   menuItems?: MenuItem[];
 }
 
-withDefaults(defineProps<NavbarProps>(), {
-  menuItems: () => [
-    { label: "Home", href: "/" },
-    { label: "Kontakt", href: "/forms/contactForm" },
-
-    {
-      label: "Produkte",
-      children: [
-        { label: "Alle Produkte", href: "/produkte" },
-        { label: "Dekoration", href: "/produkte/kategorie/dekoration" },
-        {
-          label: "Alltagshelfer",
-          href: "/produkte/kategorie/alltagshelfer",
-        },
-      ],
-    },
-
-    {
-      label: "Events",
-      children: [
-        { label: "Summer Sale", href: "/events/summer-sale" },
-        {
-          label: "Wirtschafts Live Messe",
-          href: "/events/wirtschafts-live-messe",
-        },
-      ],
-    },
-
-    { label: "Archiv", href: "/archiv" },
-  ],
+const props = withDefaults(defineProps<NavbarProps>(), {
+  menuItems: () => [],
 });
+
+const { currentLang } = useLanguage();
+
+const productChildren = computed(() =>
+  (productsData as Category[]).map((cat) => ({
+    label: currentLang.value === "en" ? cat.categoryEn : cat.category,
+    href: `/produkte/kategorie/${cat.slug}`,
+  })),
+);
+
+const defaultMenuItems = computed<MenuItem[]>(() => [
+  { label: currentLang.value === "en" ? "Home" : "Home", href: "/" },
+  {
+    label: currentLang.value === "en" ? "Contact" : "Kontakt",
+    href: "/forms/contactForm",
+  },
+  {
+    label: currentLang.value === "en" ? "Products" : "Produkte",
+    children: [
+      {
+        label: currentLang.value === "en" ? "All Products" : "Alle Produkte",
+        href: "/produkte/",
+      },
+      ...productChildren.value,
+    ],
+  },
+  {
+    label: "Events",
+    children: [
+      { label: "Summer Sale", href: "/events/summer-sale" },
+      {
+        label:
+          currentLang.value === "en"
+            ? "Business Live Fair"
+            : "Wirtschafts Live Messe",
+        href: "/events/wirtschafts-live-messe",
+      },
+    ],
+  },
+  {
+    label: currentLang.value === "en" ? "Archive" : "Archiv",
+    href: "/archiv",
+  },
+]);
+
+const localizedMenuItems = computed(() =>
+  props.menuItems.length ? props.menuItems : defaultMenuItems.value,
+);
 
 const isMenuOpen = ref(false);
 const openCategories = reactive<Record<string, boolean>>({});
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value;
-
   if (!isMenuOpen.value) {
     Object.keys(openCategories).forEach((key) => (openCategories[key] = false));
   }

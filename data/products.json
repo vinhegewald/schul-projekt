@@ -1,67 +1,87 @@
 [
   {
     "category": "Dekoration",
+    "categoryEn": "Decoration",
+    "slug": "deko",
     "products": [
       {
         "name": "Vogelhaus",
         "slug": "vogelhaus",
         "description": "Dekoratives Vogelhaus aus Holz – ein natürlicher Blickfang für Garten oder Zuhause.",
+        "descriptionEn": "Decorative wooden birdhouse – a natural eye-catcher for the garden or home.",
         "image": "/images/products/8.jpeg",
-        "alt": "Dekoratives Vogelhaus aus Holz"
+        "alt": "Dekoratives Vogelhaus aus Holz",
+        "altEn": "Decorative wooden birdhouse"
       },
       {
         "name": "Holz Truhe",
         "slug": "holz-truhe",
         "description": "Rustikale Holztruhe zur stilvollen Aufbewahrung kleiner Gegenstände.",
+        "descriptionEn": "Rustic wooden chest for stylish storage of small items.",
         "image": "/images/products/1.jpeg",
-        "alt": "Rustikale Holztruhe"
+        "alt": "Rustikale Holztruhe",
+        "altEn": "Rustic wooden chest"
       },
       {
         "name": "Holz Bilderrahmen",
         "slug": "holz-bilderrahmen",
         "description": "Schlichter Holzrahmen, der Fotos warm und natürlich in Szene setzt.",
+        "descriptionEn": "Simple wooden frame that presents photos in a warm and natural way.",
         "image": "/images/products/2.jpeg",
-        "alt": "Schlichter Holzrahmen für Fotos"
+        "alt": "Schlichter Holzrahmen für Fotos",
+        "altEn": "Simple wooden frame for photos"
       },
       {
         "name": "Holz Regal",
         "slug": "holz-regal",
         "description": "Kompaktes Holzregal für Deko, Pflanzen oder kleine Alltagsgegenstände.",
+        "descriptionEn": "Compact wooden shelf for decorations, plants, or small everyday items.",
         "image": "/images/products/3.jpeg",
-        "alt": "Kompaktes Holzregal"
+        "alt": "Kompaktes Holzregal",
+        "altEn": "Compact wooden shelf"
       },
       {
         "name": "Lego Schlüsselanhänger",
         "slug": "lego-schluesselanhaenger",
         "description": "Kreativer Schlüsselanhänger im Lego-Design – klein, verspielt und praktisch.",
+        "descriptionEn": "Creative keychain in Lego design – small, playful, and practical.",
         "image": "/images/products/5.jpeg",
-        "alt": "Kreativer Schlüsselanhänger im Lego-Design"
+        "alt": "Kreativer Schlüsselanhänger im Lego-Design",
+        "altEn": "Creative keychain in Lego design"
       },
       {
         "name": "Lego Herzen",
         "slug": "lego-herzen",
         "description": "Liebevolle Dekoherzen im Lego-Stil – ideal als kleines Geschenk.",
+        "descriptionEn": "Lovely decorative hearts in Lego style – ideal as a small gift.",
         "image": "/images/products/6.jpeg",
-        "alt": "Dekoherzen im Lego-Stil"
+        "alt": "Dekoherzen im Lego-Stil",
+        "altEn": "Decorative hearts in Lego style"
       },
       {
         "name": "Holz Schlüsselkasten Vogel Design",
         "slug": "holz-schluesselkasten-vogel",
         "description": "Dekorativer Schlüsselkasten aus Holz im Vogel-Design für mehr Ordnung im Flur.",
+        "descriptionEn": "Decorative wooden key box in bird design for a tidier hallway.",
         "image": "/images/products/7.jpeg",
-        "alt": "Dekorativer Schlüsselkasten aus Holz im Vogel-Design"
+        "alt": "Dekorativer Schlüsselkasten aus Holz im Vogel-Design",
+        "altEn": "Decorative wooden key box in bird design"
       }
     ]
   },
   {
     "category": "Alltagshelfer",
+    "categoryEn": "Everyday Helpers",
+    "slug": "alltagshelfer",
     "products": [
       {
         "name": "Holz Wasserwaage",
         "slug": "holz-wasserwaage",
         "description": "Klassische Wasserwaage aus Holz – funktional und robust für präzises Arbeiten.",
+        "descriptionEn": "Classic wooden spirit level – functional and robust for precise work.",
         "image": "/images/products/4.jpeg",
-        "alt": "Klassische Wasserwaage aus Holz"
+        "alt": "Klassische Wasserwaage aus Holz",
+        "altEn": "Classic wooden spirit level"
       }
     ]
   }
