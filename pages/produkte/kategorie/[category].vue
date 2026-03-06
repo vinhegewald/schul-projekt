@@ -1,63 +1,54 @@
 <script setup lang="ts">
-import { computed } from "vue";
 import productsData from "@/data/products.json";
-import { useLanguage } from "@/composables/useLanguage";
 
 interface Product {
   name: string;
   slug: string;
   description: string;
-  descriptionEn: string;
-  image: string;
   alt: string;
-  altEn: string;
+  image: string;
 }
 
 interface Category {
   category: string;
-  categoryEn: string;
-  slug: string;
   products: Product[];
 }
-
-const { currentLang } = useLanguage();
-
-const translations = {
-  de: { readMore: "Mehr erfahren..." },
-  en: { readMore: "Learn more..." },
-};
-
-const t = computed(() => translations[currentLang.value]);
 
 const route = useRoute();
 const categorySlug = route.params.category?.toString().toLowerCase();
 
-const category = (productsData as Category[]).find(
-  (c) => c.slug === categorySlug,
+// Flatten categories and add category slug
+const categories = (productsData as Category[]).map((cat) => ({
+  ...cat,
+  slug: cat.category.toLowerCase().replace(/\s+/g, "-"),
+}));
+
+// Find the category by slug
+const category = categories.find((c) => c.slug === categorySlug);
+
+const products = computed(() =>
+  category
+    ? category.products.map((p) => ({ ...p, category: category.category }))
+    : [],
 );
 
 if (!category) {
   throw createError({
     statusCode: 404,
-    statusMessage:
-      currentLang.value === "en"
-        ? "Category not found"
-        : "Kategorie nicht gefunden",
+    statusMessage: "Kategorie nicht gefunden",
   });
 }
 
-const categoryName = computed(() =>
-  currentLang.value === "en" ? category.categoryEn : category.category,
-);
+const config = useRuntimeConfig()
+const baseUrl = config.public.siteUrl
 
-const products = computed(() =>
-  category.products.map((p) => ({
-    ...p,
-    displayDescription:
-      currentLang.value === "en" ? p.descriptionEn : p.description,
-    displayAlt: currentLang.value === "en" ? p.altEn : p.alt,
-  })),
-);
+useSeoMeta({
+  title: category.category,
+  ogTitle: category.category,
+  description: 'Produkte von Print4Future',
+  ogDescription: 'Produkte von Print4Future',
+  ogImage: `${baseUrl}/image.png`,
+})
 </script>
 
 <template>
@@ -66,7 +57,7 @@ const products = computed(() =>
       class="max-w-[1660px] w-full flex flex-wrap justify-center gap-12 px-4"
     >
       <h1 class="w-full text-5xl font-bold text-center mb-12">
-        {{ categoryName }}
+        {{ category.category }}
       </h1>
 
       <div
@@ -76,17 +67,17 @@ const products = computed(() =>
       >
         <img
           :src="product.image"
-          :alt="product.displayAlt"
-          class="w-full rounded-t-md"
+          :alt="product.alt"
+          class="w-full rounded-t-md object-cover h-52"
         />
         <div class="flex flex-col gap-4 p-4">
           <h2 class="text-xl font-semibold">{{ product.name }}</h2>
-          <p class="text-md">{{ product.displayDescription }}</p>
+          <p class="text-md">{{ product.description }}</p>
           <NuxtLink
             :to="`/produkte/${product.slug}`"
             class="bg-[#c9c4bb] hover:bg-[#d3cec5] transition-all rounded-md border border-[#b8b3aa] px-4 py-2"
           >
-            {{ t.readMore }}
+            Mehr erfahren...
           </NuxtLink>
         </div>
       </div>
