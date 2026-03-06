@@ -10,5 +10,24 @@ export default defineNuxtConfig({
     '@nuxt/icon',
     '@nuxt/image',
     '@nuxtjs/tailwindcss'
-  ]
+  ],
+
+  app: {
+    head: {
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/logo.png' }
+      ],
+    },
+  },
+
+
+  typescript: {
+    strict: true,
+    tsConfig: {
+      compilerOptions: {
+        module: 'esnext',   
+        target: 'esnext'
+      }
+    }
+  }
 })

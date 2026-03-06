@@ -132,11 +132,12 @@ withDefaults(defineProps<NavbarProps>(), {
     {
       label: "Produkte",
       children: [
-        { label: "Alle Produkte", href: "/produkte/" },
-        { label: "Spiele", href: "/produkte/kategorie/spiele" },
-        { label: "Deko", href: "/produkte/kategorie/deko" },
-        { label: "Pokale", href: "/produkte/kategorie/pokale" },
-        { label: "Alltagshelfer", href: "/produkte/kategorie/alltagshelfer" },
+        { label: "Alle Produkte", href: "/produkte" },
+        { label: "Dekoration", href: "/produkte/kategorie/dekoration" },
+        {
+          label: "Alltagshelfer",
+          href: "/produkte/kategorie/alltagshelfer",
+        },
       ],
     },
 

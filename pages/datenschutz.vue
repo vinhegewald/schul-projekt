@@ -87,4 +87,11 @@ const sections = [
     ],
   },
 ];
+
+useSeoMeta({
+  title: "Datenschutz",
+  ogTitle: "Datenschutz",
+  description: "Datenschutz",
+  ogDescription: "Datenschutz",
+})
 </script>

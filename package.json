@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@iconify-json/circle-flags": "^1.2.10",
+    "@emailjs/browser": "^4.4.1",
     "@nuxt/eslint": "^1.9.0",
     "@nuxt/fonts": "^0.11.4",
     "@nuxt/icon": "^2.0.0",
@@ -23,5 +24,8 @@
     "vue": "^3.5.20",
     "vue-leaflet": "^0.1.0",
     "vue-router": "^4.5.1"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.2"
   }
 }

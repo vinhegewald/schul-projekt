@@ -4,8 +4,10 @@
     <section
       class="hero-section relative h-[500px] bg-cover bg-center bg-no-repeat flex items-start justify-start"
       :style="{ backgroundImage: `url(${headerImage})` }"
+      role="img"
+      :aria-label="headerImageAlt"
     >
-      <div class="hero-overlay absolute inset-0 bg-gradient-to-r from-cyan-500/70 to-transparent"></div>
+      <!-- <div class="hero-overlay absolute inset-0 bg-gradient-to-r from-cyan-500/70 to-transparent"></div> -->
       
       <div class="hero-content relative z-10 p-12 text-white max-w-2xl">
         <h1 class="text-5xl md:text-6xl font-bold mb-4 drop-shadow-lg">
@@ -34,7 +36,7 @@
       </div>
     </section>
 
-    <!-- Map Section (optional) -->
+    <!-- Map Section  -->
     <section v-if="location" class="map-section my-16 mx-auto max-w-6xl px-6">
       <ClientOnly>
         <EventsMapComponent :location="location" :zoom="mapZoom" />
@@ -63,6 +65,7 @@ interface EventPageProps {
   title: string;
   subtitle: string;
   headerImage: string;
+  headerImageAlt: string;
   contentHeader: string;
   description: string | string[];
   location?: Location;
