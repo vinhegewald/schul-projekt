@@ -1,54 +1,63 @@
 <script setup lang="ts">
+import { computed } from "vue";
 import productsData from "@/data/products.json";
+import { useLanguage } from "@/composables/useLanguage";
 
 interface Product {
   name: string;
   slug: string;
   description: string;
-  alt: string;
+  descriptionEn: string;
   image: string;
+  alt: string;
+  altEn: string;
 }
 
 interface Category {
   category: string;
+  categoryEn: string;
+  slug: string;
   products: Product[];
 }
+
+const { currentLang } = useLanguage();
+
+const translations = {
+  de: { readMore: "Mehr erfahren..." },
+  en: { readMore: "Learn more..." },
+};
+
+const t = computed(() => translations[currentLang.value]);
 
 const route = useRoute();
 const categorySlug = route.params.category?.toString().toLowerCase();
 
-// Flatten categories and add category slug
-const categories = (productsData as Category[]).map((cat) => ({
-  ...cat,
-  slug: cat.category.toLowerCase().replace(/\s+/g, "-"),
-}));
-
-// Find the category by slug
-const category = categories.find((c) => c.slug === categorySlug);
-
-const products = computed(() =>
-  category
-    ? category.products.map((p) => ({ ...p, category: category.category }))
-    : [],
+const category = (productsData as Category[]).find(
+  (c) => c.slug === categorySlug,
 );
 
 if (!category) {
   throw createError({
     statusCode: 404,
-    statusMessage: "Kategorie nicht gefunden",
+    statusMessage:
+      currentLang.value === "en"
+        ? "Category not found"
+        : "Kategorie nicht gefunden",
   });
 }
 
-const config = useRuntimeConfig()
-const baseUrl = config.public.siteUrl
+const categoryName = computed(() =>
+  currentLang.value === "en" ? category.categoryEn : category.category,
+);
 
-useSeoMeta({
-  title: category.category,
-  ogTitle: category.category,
-  description: 'Produkte von Print4Future',
-  ogDescription: 'Produkte von Print4Future',
-  ogImage: `${baseUrl}/image.png`,
-})
+const products = computed(() =>
+  category.products.map((p) => ({
+    ...p,
+    displayDescription:
+      currentLang.value === "en" ? p.descriptionEn : p.description,
+    displayAlt: currentLang.value === "en" ? p.altEn : p.alt,
+  })),
+);
 </script>
 
 <template>
@@ -57,7 +66,7 @@ useSeoMeta({
       class="max-w-[1660px] w-full flex flex-wrap justify-center gap-12 px-4"
     >
       <h1 class="w-full text-5xl font-bold text-center mb-12">
-        {{ category.category }}
+        {{ categoryName }}
       </h1>
 
       <div
@@ -67,17 +76,17 @@ useSeoMeta({
       >
         <img
           :src="product.image"
-          :alt="product.alt"
-          class="w-full rounded-t-md object-cover h-52"
+          :alt="product.displayAlt"
+          class="w-full rounded-t-md"
         />
         <div class="flex flex-col gap-4 p-4">
           <h2 class="text-xl font-semibold">{{ product.name }}</h2>
-          <p class="text-md">{{ product.description }}</p>
+          <p class="text-md">{{ product.displayDescription }}</p>
           <NuxtLink
             :to="`/produkte/${product.slug}`"
             class="bg-[#c9c4bb] hover:bg-[#d3cec5] transition-all rounded-md border border-[#b8b3aa] px-4 py-2"
           >
-            Mehr erfahren...
+            {{ t.readMore }}
           </NuxtLink>
         </div>
       </div>
