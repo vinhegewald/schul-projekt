@@ -1,38 +1,20 @@
 <script setup lang="ts">
-import productsData from "@/data/products.json";
-
-interface Product {
-  name: string;
-  slug: string;
-  description: string;
-  image: string;
-}
-
-interface Category {
-  category: string;
-  products: Product[];
-}
+import { computed } from 'vue';
+import { useProducts } from '@/composables/useProducts';
+import { useSiteContent } from '@/composables/useSiteContent';
 
 const route = useRoute();
-const categorySlug = route.params.category?.toString().toLowerCase();
+const { content } = useSiteContent();
+const { getCategoryBySlug } = useProducts();
 
-// Flatten categories and add category slug
-const categories = (productsData as Category[]).map((cat) => ({
-  ...cat,
-  slug: cat.category.toLowerCase().replace(/\s+/g, "-"),
-}));
+const category = computed(() => getCategoryBySlug(route.params.category?.toString() ?? ''));
 
-// Find the category by slug
-const category = categories.find((c) => c.slug === categorySlug);
+const products = computed(() => category.value?.products ?? []);
 
-const products = computed(() =>
-    category ? category.products.map((p) => ({ ...p, category: category.category })) : []
-);
-
-if (!category) {
+if (!category.value) {
   throw createError({
     statusCode: 404,
-    statusMessage: "Kategorie nicht gefunden",
+    statusMessage: content.value.products.categoryNotFound,
   });
 }
 </script>
@@ -40,7 +22,7 @@ if (!category) {
 <template>
   <div class="mt-[120px] w-full flex flex-col items-center px-6">
     <div class="max-w-[1660px] w-full flex flex-wrap justify-center gap-12 px-4">
-      <h1 class="w-full text-5xl font-bold text-center mb-12">{{ category.category }}</h1>
+      <h1 class="w-full text-5xl font-bold text-center mb-12">{{ category?.category }}</h1>
 
       <div
           v-for="product in products"
@@ -55,7 +37,7 @@ if (!category) {
                 :to="`/produkte/${product.slug}`"
                 class="bg-[#c9c4bb] hover:bg-[#d3cec5] transition-all rounded-md border border-[#b8b3aa] px-4 py-2"
             >
-              Mehr erfahren...
+              {{ content.products.learnMore }}
             </NuxtLink>
           </div>
       </div>

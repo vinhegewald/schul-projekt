@@ -1,209 +1,228 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
+import { useSiteContent } from '@/composables/useSiteContent';
+
+type SalutationValue = 'ms' | 'mr' | 'none' | '';
 
 interface FormData {
-  anrede: 'Frau' | 'Herr' | 'Keine Angabe' | '';
-  vorname: string;
-  nachname: string;
+  salutation: SalutationValue;
+  firstName: string;
+  lastName: string;
   email: string;
-  telefon: string;
-  kommentar: string;
-  datenschutz: boolean;
+  phone: string;
+  comment: string;
+  privacy: boolean;
 }
 
+const { content } = useSiteContent();
+
 const formData = ref<FormData>({
-  anrede: '',
-  vorname: '',
-  nachname: '',
+  salutation: '',
+  firstName: '',
+  lastName: '',
   email: '',
-  telefon: '',
-  kommentar: '',
-  datenschutz: false,
+  phone: '',
+  comment: '',
+  privacy: false,
 });
 
-const handleSubmit = () => {
-  if (!formData.value.anrede || !formData.value.vorname || !formData.value.nachname || !formData.value.email || !formData.value.kommentar) {
-    alert('Bitte füllen Sie alle erforderlichen Felder aus.');
-    return;
-  }
-  if(!formData.value.email.includes('@')){
-    alert('Bitte geben Sie eine gültige E-Mail-Adresse ein.');
-    return;
-  }
-  if (!formData.value.datenschutz) {
-    alert('Bitte stimmen Sie den Datenschutzbestimmungen zu.');
-    return;
-  }
-  console.log('Formulardaten:', formData.value);
-  resetForm();
-  alert('Formular erfolgreich gesendet!');
-};
+const salutationOptions = computed(() => [
+  { value: 'ms' as const, label: content.value.contactForm.salutations.ms },
+  { value: 'mr' as const, label: content.value.contactForm.salutations.mr },
+  { value: 'none' as const, label: content.value.contactForm.salutations.none },
+]);
 
 const resetForm = () => {
   formData.value = {
-    anrede: '', vorname: '', nachname: '', email: '',
-    telefon: '', kommentar: '', datenschutz: false,
+    salutation: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    comment: '',
+    privacy: false,
   };
 };
 
-const salutationOptions = ['Frau', 'Herr', 'Keine Angabe'];
+const isEmailValid = (email: string) => {
+  return email.includes('@');
+};
+
+const handleSubmit = () => {
+  if (
+    !formData.value.salutation
+    || !formData.value.firstName
+    || !formData.value.lastName
+    || !formData.value.email
+    || !formData.value.comment
+  ) {
+    alert(content.value.contactForm.alerts.required);
+    return;
+  }
+
+  if (!isEmailValid(formData.value.email)) {
+    alert(content.value.contactForm.alerts.invalidEmail);
+    return;
+  }
+
+  if (!formData.value.privacy) {
+    alert(content.value.contactForm.alerts.privacy);
+    return;
+  }
+
+  console.log(content.value.contactForm.logLabel, formData.value);
+  resetForm();
+  alert(content.value.contactForm.alerts.success);
+};
 </script>
 
 <template>
   <div class="min-h-screen flex items-center justify-center p-4" style="background-color: #C8C4BE;">
-    <div class="p-4 sm:p-6 md:p-8 rounded max-w-lg w-full bg-[#DEDAD5] shadow-lg mx-auto">
-      <!--Anrede-->
+    <form class="p-4 sm:p-6 md:p-8 rounded max-w-lg w-full bg-[#DEDAD5] shadow-lg mx-auto" @submit.prevent="handleSubmit">
       <div class="mb-6 sm:mb-8 md:md-10 mx-4 sm:mx-6 md:mx-8 lg:mx-12">
         <label class="block text-gray-800 text-sm sm:text-base mb-2">
-
-          Anrede <span class="text-red-800">*</span>
+          {{ content.contactForm.salutation }} <span class="text-red-800">*</span>
         </label>
 
         <div class="relative">
           <select
-              v-model="formData.anrede"
-              required class="px-4 py-3 rounded  text-gray-800 w-full bg-[#E8E4DF] border-none outline-none focus:ring-2 focus:ring-[#8B8589]"
+            v-model="formData.salutation"
+            required
+            class="px-4 py-3 rounded text-gray-800 w-full bg-[#E8E4DF] border-none outline-none focus:ring-2 focus:ring-[#8B8589]"
           >
-            <!--<option value="">Bitte auswählen</option>-->
-            <option v-for="opt in salutationOptions" :key="opt" :value="opt">{{opt}}</option>
+            <option value="" disabled>{{ content.contactForm.selectPlaceholder }}</option>
+            <option v-for="opt in salutationOptions" :key="opt.value" :value="opt.value">{{ opt.label }}</option>
           </select>
-
         </div>
       </div>
-      <!--Vorname-->
+
       <div class="mb-6 sm:mb-8 md:md-10 mx-4 sm:mx-6 md:mx-8 lg:mx-12">
         <label class="block text-gray-800 text-sm sm:text-base mb-2">
-
-          Vorname <span class="text-red-800">*</span>
+          {{ content.contactForm.firstName }} <span class="text-red-800">*</span>
         </label>
 
         <div class="relative">
           <input
-              v-model="formData.vorname"
-              type="text"
-              required class="px-4 py-3 rounded appearance-none cursor-pointer text-gray-800 w-full bg-[#E8E4DF] border-none outline-none focus:ring-2 focus:ring-[#8B8589]"
+            v-model="formData.firstName"
+            type="text"
+            required
+            class="px-4 py-3 rounded appearance-none text-gray-800 w-full bg-[#E8E4DF] border-none outline-none focus:ring-2 focus:ring-[#8B8589]"
           >
-
         </div>
       </div>
-      <!--Nachname-->
+
       <div class="mb-6 sm:mb-8 md:mb-10 mx-4 sm:mx-6 md:mx-8 lg:mx-12">
         <label class="block text-gray-800 text-sm sm:text-base mb-2">
-
-          Nachname <span class="text-red-800">*</span>
+          {{ content.contactForm.lastName }} <span class="text-red-800">*</span>
         </label>
 
         <div class="relative">
           <input
-              v-model="formData.nachname"
-              type="text"
-              required class="px-4 py-3 rounded appearance-none cursor-pointer text-gray-800 w-full bg-[#E8E4DF] border-none outline-none focus:ring-2 focus:ring-[#8B8589]"
+            v-model="formData.lastName"
+            type="text"
+            required
+            class="px-4 py-3 rounded appearance-none text-gray-800 w-full bg-[#E8E4DF] border-none outline-none focus:ring-2 focus:ring-[#8B8589]"
           >
-
         </div>
       </div>
-      <!--E-Mail-->
+
       <div class="mb-6 sm:mb-8 md:mb-10 mx-4 sm:mx-6 md:mx-8 lg:mx-12">
         <label class="block text-gray-800 text-sm sm:text-base mb-2">
-
-          E-Mail <span class="text-red-800">*</span>
+          {{ content.contactForm.email }} <span class="text-red-800">*</span>
         </label>
 
         <div class="relative">
           <input
-              v-model="formData.email"
-              type="email"
-              required class="px-4 py-3 rounded appearance-none cursor-pointer text-gray-800 w-full bg-[#E8E4DF] border-none outline-none focus:ring-2 focus:ring-[#8B8589]"
+            v-model="formData.email"
+            type="email"
+            required
+            class="px-4 py-3 rounded appearance-none text-gray-800 w-full bg-[#E8E4DF] border-none outline-none focus:ring-2 focus:ring-[#8B8589]"
           >
-
         </div>
       </div>
-      <!--Telefon (optional)-->
+
       <div class="mb-6 sm:mb-8 md:mb-10 mx-4 sm:mx-6 md:mx-8 lg:mx-12">
         <label class="block text-gray-800 text-sm sm:text-base mb-2">
-
-          Telefon <span class="text-gray-800 text-sm">(optional)</span>
+          {{ content.contactForm.phone }}
+          <span class="text-gray-800 text-sm">{{ content.contactForm.optional }}</span>
         </label>
 
         <div class="relative">
           <input
-              v-model="formData.telefon"
-              type="tel"
-              required class="px-4 py-3 rounded appearance-none cursor-pointer text-gray-800 w-full bg-[#E8E4DF] border-none outline-none focus:ring-2 focus:ring-[#8B8589]"
+            v-model="formData.phone"
+            type="tel"
+            class="px-4 py-3 rounded appearance-none text-gray-800 w-full bg-[#E8E4DF] border-none outline-none focus:ring-2 focus:ring-[#8B8589]"
           >
-
         </div>
       </div>
-      <!--Kommentar-->
+
       <div class="mb-6 sm:mb-8 md:mb-10 mx-4 sm:mx-6 md:mx-8 lg:mx-12">
         <label class="block text-gray-800 text-sm sm:text-base mb-2">
-
-          Kommentar <span class="text-red-800">*</span>
+          {{ content.contactForm.comment }} <span class="text-red-800">*</span>
         </label>
 
         <div class="relative">
           <textarea
-              v-model="formData.kommentar"
-              required
-              rows="3"
-              class="px-4 py-3 rounded appearance-none cursor-pointer text-gray-800 w-full max-w-md bg-[#E8E4DF] border-none outline-none focus:ring-2 focus:ring-[#8B8589] resize-none"
+            v-model="formData.comment"
+            required
+            rows="3"
+            class="px-4 py-3 rounded appearance-none text-gray-800 w-full max-w-md bg-[#E8E4DF] border-none outline-none focus:ring-2 focus:ring-[#8B8589] resize-none"
           >
           </textarea>
         </div>
       </div>
-      <!--Datenschutz-->
+
       <div class="flex flex-col items-start gap-3 mx-4 sm:mx-6 md:mx-8 lg:mx-12 mb-6">
-        <div class="flex items-start-gap-3">
+        <div class="flex items-start gap-3">
           <input
-              v-model="formData.datenschutz"
-              type="checkbox"
-              id="datenschutz"
-              required class="mt-1 h-4 w-4 cursor-pointer"
-              style="accent-color: #8B8589;">
+            id="datenschutz"
+            v-model="formData.privacy"
+            type="checkbox"
+            required
+            class="mt-1 h-4 w-4 cursor-pointer"
+          >
           <label for="datenschutz" class="text-sm text-gray-800 cursor-pointer leading-tight">
-            Ich habe die
-            <a href="#" class="text-blue-800 hover:underline">Datenschutzbestimmungen</a>
-            gelesen
+            <span>{{ content.contactForm.privacyPrefix }} </span>
+            <NuxtLink to="/datenschutz" class="text-blue-800 hover:underline">
+              {{ content.contactForm.privacyLink }}
+            </NuxtLink>
+            <span v-if="content.contactForm.privacySuffix"> {{ content.contactForm.privacySuffix }}</span>
           </label>
         </div>
       </div>
-      <!--Button-->
+
       <div class="text-center sm:text-right mx-4 sm:mx-6 md:mx-8 lg:mx-12">
-        <button @click="handleSubmit" type="submit" class="w-full sm:w-auto bg-white border border-stone-800 text-stone-8000 font-medium px-6 py-3 sm:px-8 sm:py-3 md:px-10 md:py-3 rounded-lg transition duration-300 shadow-sm hover:shadow-md hover:bg-stone-100 active:bg-stone-200"
+        <button type="submit" class="w-full sm:w-auto bg-white border border-stone-800 text-stone-800 font-medium px-6 py-3 sm:px-8 sm:py-3 md:px-10 md:py-3 rounded-lg transition duration-300 shadow-sm hover:shadow-md hover:bg-stone-100 active:bg-stone-200"
         >
-          Senden
+          {{ content.contactForm.submit }}
         </button>
       </div>
-    </div>
+    </form>
   </div>
 </template>
 
 
 <style scoped>
-/* Remove default select arrow in IE */
 select::-ms-expand {
   display: none;
 }
 
-/* Focus states */
 input:focus, select:focus, textarea:focus {
   box-shadow: 0 0 0 2px rgba(139, 133, 137, 0.3);
 }
 
-Checkbox styling for better cross-browser support
+/* Checkbox styling for better cross-browser support */
 input[type="checkbox"] {
   -webkit-appearance: none;
   appearance: none;
   width: 16px;
   height: 16px;
   border: 1px solid #9CA3AF;
-  border-radius: 16px;
+  border-radius: 4px;
   background-color: #E8E4DF;
   position: relative;
   flex-shrink: 0;
 }
-
-
 
 input[type="checkbox"]:checked {
   background-color: #8B8580;

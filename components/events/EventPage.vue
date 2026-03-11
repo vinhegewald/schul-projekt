@@ -40,7 +40,7 @@
         <EventsMapComponent :location="location" :zoom="mapZoom" />
         <template #fallback>
           <div class="h-[400px] bg-gray-200 rounded-lg flex items-center justify-center">
-            <p class="text-gray-600">Karte wird geladen...</p>
+            <p class="text-gray-600">{{ content.events.loadingMap }}</p>
           </div>
         </template>
       </ClientOnly>
@@ -50,6 +50,8 @@
 </template>
 
 <script setup lang="ts">
+import { useSiteContent } from '@/composables/useSiteContent';
+
 interface Location {
   name: string;
   address: string;
@@ -76,6 +78,8 @@ withDefaults(defineProps<EventPageProps>(), {
 defineOptions({
   name: 'EventPage',
 });
+
+const { content } = useSiteContent();
 </script>
 
 

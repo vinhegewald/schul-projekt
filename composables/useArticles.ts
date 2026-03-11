@@ -1,13 +1,41 @@
+import { computed } from 'vue';
+import { useLocale } from '@/composables/useLocale';
+import {
+  getLocalizedArray,
+  getLocalizedText,
+  type LocalizedText,
+  type LocalizedTextArray,
+} from '@/utils/localized';
+
+interface ArticleRecord {
+  id: number;
+  image: string;
+  slug: string;
+  title: string | LocalizedText;
+  description: string | LocalizedText;
+  date: string;
+  excerpt: string | LocalizedText;
+  content: string[] | LocalizedTextArray;
+}
+
 export function useArticles() {
-  const loadAll = async () => {
-    const articleFiles = import.meta.glob('/data/articles/*.json', { eager: true })
-    return Object.values(articleFiles).map((m: any) => m.default)
-  }
+  const { locale } = useLocale();
 
-  const loadBySlug = async (slug: string) => {
-    const articles = await loadAll()
-    return articles.find(article => article.slug === slug)
-  }
+  const articleFiles = import.meta.glob('/data/articles/*.json', { eager: true });
+  const rawArticles = Object.values(articleFiles).map((module) => module.default as ArticleRecord);
 
-  return { loadAll, loadBySlug }
+  const articles = computed(() =>
+    rawArticles.map((article) => ({
+      ...article,
+      title: getLocalizedText(article.title, locale.value),
+      description: getLocalizedText(article.description, locale.value),
+      excerpt: getLocalizedText(article.excerpt, locale.value),
+      content: getLocalizedArray(article.content, locale.value),
+    })),
+  );
+
+  const getArticleBySlug = (slug: string) =>
+    articles.value.find((article) => article.slug === slug);
+
+  return { articles, getArticleBySlug };
 }

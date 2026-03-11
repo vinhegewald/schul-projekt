@@ -1,5 +1,9 @@
 <script setup lang="ts">
-defineProps<{ article: any }>()
+import { useSiteContent } from '@/composables/useSiteContent';
+
+defineProps<{ article: any }>();
+
+const { content } = useSiteContent();
 </script>
 
 <template>
@@ -9,7 +13,7 @@ defineProps<{ article: any }>()
       <article class="flex flex-col">
         <img
           :src="article.image"
-          alt="Preview"
+          :alt="content.archive.previewAlt"
           class="w-full h-40 object-cover rounded-lg shrink-0"
         />
         <h1 class="text-2xl mt-10">{{ article.title }}</h1>

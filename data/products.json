@@ -1,74 +1,144 @@
 [
   {
-    "category": "Spiele",
+    "slug": "spiele",
+    "category": {
+      "de": "Spiele",
+      "en": "Games"
+    },
     "products": [
       {
-        "name": "Dynamic Controller",
+        "name": {
+          "de": "Dynamic Controller",
+          "en": "Dynamic Controller"
+        },
         "slug": "dynamic-controller",
-        "description": "Der Dynamic Controller sorgt für präzise Steuerung und maximalen Spielspaß.",
+        "description": {
+          "de": "Der Dynamic Controller sorgt für präzise Steuerung und maximalen Spielspaß.",
+          "en": "The Dynamic Controller delivers precise control and maximum fun."
+        },
         "image": "/images/products/1.png"
       },
       {
-        "name": "Ultra Drone",
+        "name": {
+          "de": "Ultra Drone",
+          "en": "Ultra Drone"
+        },
         "slug": "ultra-drone",
-        "description": "Die Ultra Drone bietet spannende Flugmanöver für jedes Spiellevel.",
+        "description": {
+          "de": "Die Ultra Drone bietet spannende Flugmanöver für jedes Spiellevel.",
+          "en": "The Ultra Drone offers exciting flight maneuvers for every game level."
+        },
         "image": "/images/products/1.png"
       }
     ]
   },
   {
-    "category": "Deko",
+    "slug": "deko",
+    "category": {
+      "de": "Deko",
+      "en": "Decor"
+    },
     "products": [
       {
-        "name": "Elegant Lamp",
+        "name": {
+          "de": "Elegant Lamp",
+          "en": "Elegant Lamp"
+        },
         "slug": "elegant-lamp",
-        "description": "Die Elegant Lamp setzt stilvolle Akzente und sorgt für warme Beleuchtung.",
+        "description": {
+          "de": "Die Elegant Lamp setzt stilvolle Akzente und sorgt für warme Beleuchtung.",
+          "en": "The Elegant Lamp adds stylish accents and creates warm lighting."
+        },
         "image": "/images/products/1.png"
       },
       {
-        "name": "Crystal Light",
+        "name": {
+          "de": "Crystal Light",
+          "en": "Crystal Light"
+        },
         "slug": "crystal-light",
-        "description": "Das Crystal Light verleiht jedem Raum eine moderne Ästhetik.",
+        "description": {
+          "de": "Das Crystal Light verleiht jedem Raum eine moderne Ästhetik.",
+          "en": "Crystal Light gives every room a modern aesthetic."
+        },
         "image": "/images/products/1.png"
       }
     ]
   },
   {
-    "category": "Pokale",
+    "slug": "pokale",
+    "category": {
+      "de": "Pokale",
+      "en": "Trophies"
+    },
     "products": [
       {
-        "name": "Prime Trophy",
+        "name": {
+          "de": "Prime Trophy",
+          "en": "Prime Trophy"
+        },
         "slug": "prime-trophy",
-        "description": "Der Prime Trophy-Pokal steht für höchste Leistungen und edles Design.",
+        "description": {
+          "de": "Der Prime Trophy-Pokal steht für höchste Leistungen und edles Design.",
+          "en": "The Prime Trophy stands for top performance and elegant design."
+        },
         "image": "/images/products/1.png"
       },
       {
-        "name": "Titan Award",
+        "name": {
+          "de": "Titan Award",
+          "en": "Titan Award"
+        },
         "slug": "titan-award",
-        "description": "Der Titan Award symbolisiert Stärke und Erfolg.",
+        "description": {
+          "de": "Der Titan Award symbolisiert Stärke und Erfolg.",
+          "en": "The Titan Award symbolizes strength and success."
+        },
         "image": "/images/products/1.png"
       }
     ]
   },
   {
-    "category": "Alltagshelfer",
+    "slug": "alltagshelfer",
+    "category": {
+      "de": "Alltagshelfer",
+      "en": "Everyday Helpers"
+    },
     "products": [
       {
-        "name": "Smart Watch",
+        "name": {
+          "de": "Smart Watch",
+          "en": "Smart Watch"
+        },
         "slug": "smart-watch",
-        "description": "Die Smart Watch unterstützt deinen Alltag mit smarten Funktionen.",
+        "description": {
+          "de": "Die Smart Watch unterstützt deinen Alltag mit smarten Funktionen.",
+          "en": "The Smart Watch supports your everyday life with smart features."
+        },
         "image": "/images/products/1.png"
       },
       {
-        "name": "Eco Bottle",
+        "name": {
+          "de": "Eco Bottle",
+          "en": "Eco Bottle"
+        },
         "slug": "eco-bottle",
-        "description": "Die Eco Bottle ist langlebig, stilvoll und ideal für unterwegs.",
+        "description": {
+          "de": "Die Eco Bottle ist langlebig, stilvoll und ideal für unterwegs.",
+          "en": "The Eco Bottle is durable, stylish and ideal for travel."
+        },
         "image": "/images/products/1.png"
       },
       {
-        "name": "Compact Backpack",
+        "name": {
+          "de": "Compact Backpack",
+          "en": "Compact Backpack"
+        },
         "slug": "compact-backpack",
-        "description": "Der Compact Backpack ist perfekt für Schule, Arbeit und Freizeit.",
+        "description": {
+          "de": "Der Compact Backpack ist perfekt für Schule, Arbeit und Freizeit.",
+          "en": "The Compact Backpack is perfect for school, work and leisure."
+        },
         "image": "/images/products/1.png"
       }
     ]

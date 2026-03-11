@@ -1,32 +1,22 @@
 <template>
   <EventsEventPage
-    title="SUMMER SALE:"
-    subtitle="SAVE THE DATE ?.06.26"
+    :title="event.title"
+    :subtitle="event.subtitle"
     :header-image="headerImage"
-    content-header="Summer-Sale:"
-    :description="eventDescription"
-    :location="eventLocation"
+    :content-header="event.contentHeader"
+    :description="event.description"
+    :location="event.location"
   />
 </template>
 
 <script setup lang="ts">
-// FIXME JSC Placeholder - replace with actual image
-const headerImage = '/images/events/summer-sale.jpg'; 
+import { computed } from 'vue';
+import { useSiteContent } from '@/composables/useSiteContent';
 
-// FIXME JSC other group needs to provide content
-const eventDescription = [
-  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
-];
+const { content } = useSiteContent();
+const headerImage = '/images/events/summer-sale.jpg';
 
-// FIXME JSC check for correct coordinates
-const eventLocation = {
-  name: 'BBS1 Lüneburg',
-  address: 'Spillbrunnenweg 1, 21337 Lüneburg, Deutschland',
-  coordinates: {
-    lat: 53.2467, 
-    lng: 10.4108,
-  },
-};
+const event = computed(() => content.value.events.summerSale);
 
 defineOptions({
   name: 'SummerSalePage',
