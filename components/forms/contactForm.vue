@@ -140,7 +140,7 @@ const handleSubmit = () => {
           >
         </div>
       </div>
-
+<!-- 
       <div class="mb-6 sm:mb-8 md:mb-10 mx-4 sm:mx-6 md:mx-8 lg:mx-12">
         <label class="block text-gray-800 text-sm sm:text-base mb-2">
           {{ content.contactForm.phone }}
@@ -154,7 +154,7 @@ const handleSubmit = () => {
             class="px-4 py-3 rounded appearance-none text-gray-800 w-full bg-[#E8E4DF] border-none outline-none focus:ring-2 focus:ring-[#8B8589]"
           >
         </div>
-      </div>
+      </div> -->
 
       <div class="mb-6 sm:mb-8 md:mb-10 mx-4 sm:mx-6 md:mx-8 lg:mx-12">
         <label class="block text-gray-800 text-sm sm:text-base mb-2">
