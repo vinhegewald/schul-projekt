@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full">
+  <div class="w-full relative z-0">
     <div class="w-full h-[400px] rounded-lg overflow-hidden shadow-lg border-2 border-gray-300">
       <LMap
         ref="map"
