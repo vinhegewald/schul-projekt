@@ -5,8 +5,9 @@
       class="hero-section relative h-[500px] bg-cover bg-center bg-no-repeat flex items-start justify-start"
       :style="{ backgroundImage: `url(${headerImage})` }"
     >
-      <div class="hero-overlay absolute inset-0 bg-gradient-to-r from-cyan-500/70 to-transparent"></div>
-      
+        <!--dark semi-transparent gradient for better contrast, can be removed -->
+<div class="hero-overlay absolute inset-0 bg-gradient-to-r from-black/50 to-transparent"></div>
+
       <div class="hero-content relative z-10 p-12 text-white max-w-2xl">
         <h1 class="text-5xl md:text-6xl font-bold mb-4 drop-shadow-lg">
           {{ title }}
