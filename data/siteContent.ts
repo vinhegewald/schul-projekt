@@ -27,6 +27,7 @@ type EventContent = {
   contentHeader: string;
   description: string[];
   location: EventLocation;
+  headerImageAlt: string;
 };
 
 type SiteContent = {
@@ -108,6 +109,7 @@ type SiteContent = {
       invalidEmail: string;
       privacy: string;
       success: string;
+      error: string;
     };
   };
 };
@@ -189,6 +191,7 @@ export const siteContent: Record<Locale, SiteContent> = {
         title: 'Summer Sale',
         subtitle: 'Juni 2026',
         contentHeader: 'Summer Sale:',
+        headerImageAlt: 'Summer Sale Banner',
         description: [
           'Weitere Informationen zu unserem Summer Sale folgen in Kürze.',
         ],
@@ -205,6 +208,7 @@ export const siteContent: Record<Locale, SiteContent> = {
         title: 'Wirtschafts Live Messe',
         subtitle: 'Besuchen Sie uns auf der Messe am 18.03.2026',
         contentHeader: 'Über die Veranstaltung:',
+        headerImageAlt: 'Wirtschafts Live Messe Banner',
         description: [
           'Die Wirtschaft-Live-Messe der Schülerunternehmen findet dieses Jahr in der BBS Walsrode statt. Dort stellen etwa 20 Schülerunternehmen aus ganz Niedersachsen aus und messen sich in den Wettbewerben „bester Messestand“, „bester Messebandbeitrag“, „bester Imagefilm“ und „beste Fotopräsentation der Geschäftsidee“.',
           'Die Messe bietet Jugendlichen die Möglichkeit, ihre Geschäftsideen und Produkte einer breiten Öffentlichkeit vorzustellen. Ziel der Veranstaltung ist es, unternehmerisches Denken und Handeln praxisnah zu fördern, wirtschaftliche Kompetenzen zu stärken und den Austausch zwischen Schüler/-innen, Schulen, Wirtschaft und Politik zu unterstützen.',
@@ -262,9 +266,17 @@ export const siteContent: Record<Locale, SiteContent> = {
           {
             heading: '3. Datenerfassung auf dieser Website',
             paragraphs: [
-              'Diese Website erfasst keine personenbezogenen Daten. Wir verwenden keine Cookies, keine Analyse-Tools und keine Tracking-Dienste.',
-              'Beim Besuch der Website werden automatisch technische Informationen durch Ihren Browser an unseren Server übermittelt. Diese Daten werden ausschließlich zur technischen Bereitstellung der Website verwendet und nicht gespeichert oder ausgewertet.',
-            ],
+            "Für die Bearbeitung von Kontaktanfragen verarbeiten wir Ihre E-Mail-Adresse sowie Ihren Vor- und Nachnamen. Zur Übermittlung Ihrer Nachrichten nutzen wir den Dienst EmailJS, an den diese Daten weitergegeben werden. Wir setzen keine Cookies, Analyse-Tools oder Tracking-Dienste ein.",
+      "Beim Besuch der Website werden automatisch technische Informationen durch Ihren Browser an unseren Server übermittelt. Diese Daten werden ausschließlich zur technischen Bereitstellung der Website verwendet und nicht gespeichert oder ausgewertet.",
+      "Der Provider der Seiten erhebt und speichert automatisch Informationen in sogenannten Server-Log-Dateien, die Ihr Browser automatisch an uns übermittelt. Dies sind:",
+      "• Browsertyp und Browserversion",
+      "• Verwendetes Betriebssystem",
+      "• Referrer URL",
+      "• Hostname des zugreifenden Rechners",
+      "• Uhrzeit der Serveranfrage",
+      "• IP-Adresse",
+      "Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen. Die Erfassung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Der Websitebetreiber hat ein berechtigtes Interesse an der technisch fehlerfreien Darstellung und der Optimierung seiner Website.",
+    ],
           },
           {
             heading: '4. Kontaktformular',
@@ -353,6 +365,7 @@ export const siteContent: Record<Locale, SiteContent> = {
         invalidEmail: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.',
         privacy: 'Bitte stimmen Sie den Datenschutzbestimmungen zu.',
         success: 'Formular erfolgreich gesendet!',
+        error: 'Beim Senden des Formulars ist ein Fehler aufgetreten.',
       },
     },
   },
@@ -432,6 +445,7 @@ export const siteContent: Record<Locale, SiteContent> = {
         title: 'Summer Sale',
         subtitle: 'June 2026',
         contentHeader: 'Summer Sale:',
+        headerImageAlt: 'Summer Sale Banner',
         description: [
           'More information about our Summer Sale will follow shortly.',
         ],
@@ -448,6 +462,7 @@ export const siteContent: Record<Locale, SiteContent> = {
         title: 'Business Live Fair',
         subtitle: 'Visit us at the fair 18.03.2026',
         contentHeader: 'About the event:',
+        headerImageAlt: 'Business Live Fair Banner',
         description: [
           'This year the Business Live Fair for student companies takes place in the BBS Walsrode. Around 20 student companies from across Lower Saxony present their work there and compete in categories such as “best trade fair booth”, “best fair magazine contribution”, “best image film” and “best photo presentation of the business idea”.',
           'The fair gives young people the opportunity to present their business ideas and products to a wider audience. Its goal is to promote entrepreneurial thinking and action in a practical way, strengthen business skills, and encourage exchange between students, schools, business and politics.',
@@ -505,8 +520,16 @@ export const siteContent: Record<Locale, SiteContent> = {
           {
             heading: '3. Data collection on this website',
             paragraphs: [
-              'This website does not collect personal data. We do not use cookies, analytics tools or tracking services.',
-              'When you visit the website, technical information is automatically transmitted by your browser to our server. This data is used exclusively to provide the website technically and is not stored or evaluated.',
+              "For processing contact requests, we process your email address as well as your first and last name. To transmit your messages, we use the service EmailJS, to which this data is passed on. We do not use any cookies, analytics tools, or tracking services.",
+"When visiting the website, technical information is automatically transmitted to our server by your browser. This data is used exclusively for the technical provision of the website and is neither stored nor evaluated.",
+"The provider of these pages automatically collects and stores information in so-called server log files, which your browser automatically transmits to us. These are:",
+"• Browser type and browser version",
+"• Operating system used",
+"• Referrer URL",
+"• Hostname of the accessing device",
+"• Time of the server request",
+"• IP address",
+"This data is not merged with other data sources. The collection of this data is based on Art. 6 para. 1 lit. f GDPR. The website operator has a legitimate interest in the technically error-free presentation and optimization of their website.",
             ],
           },
           {
@@ -596,6 +619,7 @@ export const siteContent: Record<Locale, SiteContent> = {
         invalidEmail: 'Please enter a valid email address.',
         privacy: 'Please agree to the privacy policy.',
         success: 'Form submitted successfully!',
+        error: 'An error occurred. Please try again later.',
       },
     },
   },

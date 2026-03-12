@@ -1,100 +1,101 @@
 [
   {
-    "slug": "spiele",
+    "slug": "dekoration",
     "category": {
-      "de": "Spiele",
-      "en": "Games"
+      "de": "Dekoration",
+      "en": "Decoration"
     },
     "products": [
       {
         "name": {
-          "de": "Dynamic Controller",
-          "en": "Dynamic Controller"
+          "de": "Vogelhaus",
+          "en": "Birdhouse"
         },
-        "slug": "dynamic-controller",
+        "slug": "vogelhaus",
         "description": {
-          "de": "Der Dynamic Controller sorgt für präzise Steuerung und maximalen Spielspaß.",
-          "en": "The Dynamic Controller delivers precise control and maximum fun."
+          "de": "Dekoratives Vogelhaus aus Holz – ein natürlicher Blickfang für Garten oder Zuhause.",
+          "en": "Decorative wooden birdhouse – a natural eye-catcher for the garden or home."
         },
-        "image": "/images/products/1.png"
+        "image": "/images/products/8.jpeg",
+        "alt": "Dekoratives Vogelhaus aus Holz"
       },
       {
         "name": {
-          "de": "Ultra Drone",
-          "en": "Ultra Drone"
+          "de": "Holz Truhe",
+          "en": "Wooden Chest"
         },
-        "slug": "ultra-drone",
+        "slug": "holz-truhe",
         "description": {
-          "de": "Die Ultra Drone bietet spannende Flugmanöver für jedes Spiellevel.",
-          "en": "The Ultra Drone offers exciting flight maneuvers for every game level."
+          "de": "Rustikale Holztruhe zur stilvollen Aufbewahrung kleiner Gegenstände.",
+          "en": "Rustic wooden chest for stylish storage of small items."
         },
-        "image": "/images/products/1.png"
-      }
-    ]
-  },
-  {
-    "slug": "deko",
-    "category": {
-      "de": "Deko",
-      "en": "Decor"
-    },
-    "products": [
-      {
-        "name": {
-          "de": "Elegant Lamp",
-          "en": "Elegant Lamp"
-        },
-        "slug": "elegant-lamp",
-        "description": {
-          "de": "Die Elegant Lamp setzt stilvolle Akzente und sorgt für warme Beleuchtung.",
-          "en": "The Elegant Lamp adds stylish accents and creates warm lighting."
-        },
-        "image": "/images/products/1.png"
+        "image": "/images/products/1.jpeg",
+        "alt": "Rustikale Holztruhe"
       },
       {
         "name": {
-          "de": "Crystal Light",
-          "en": "Crystal Light"
+          "de": "Holz Bilderrahmen",
+          "en": "Wooden Picture Frame"
         },
-        "slug": "crystal-light",
+        "slug": "holz-bilderrahmen",
         "description": {
-          "de": "Das Crystal Light verleiht jedem Raum eine moderne Ästhetik.",
-          "en": "Crystal Light gives every room a modern aesthetic."
+          "de": "Schlichter Holzrahmen, der Fotos warm und natürlich in Szene setzt.",
+          "en": "Simple wooden frame that presents photos in a warm and natural way."
         },
-        "image": "/images/products/1.png"
-      }
-    ]
-  },
-  {
-    "slug": "pokale",
-    "category": {
-      "de": "Pokale",
-      "en": "Trophies"
-    },
-    "products": [
-      {
-        "name": {
-          "de": "Prime Trophy",
-          "en": "Prime Trophy"
-        },
-        "slug": "prime-trophy",
-        "description": {
-          "de": "Der Prime Trophy-Pokal steht für höchste Leistungen und edles Design.",
-          "en": "The Prime Trophy stands for top performance and elegant design."
-        },
-        "image": "/images/products/1.png"
+        "image": "/images/products/2.jpeg",
+        "alt": "Schlichter Holzrahmen für Fotos"
       },
       {
         "name": {
-          "de": "Titan Award",
-          "en": "Titan Award"
+          "de": "Holz Regal",
+          "en": "Wooden Shelf"
         },
-        "slug": "titan-award",
+        "slug": "holz-regal",
         "description": {
-          "de": "Der Titan Award symbolisiert Stärke und Erfolg.",
-          "en": "The Titan Award symbolizes strength and success."
+          "de": "Kompaktes Holzregal für Deko, Pflanzen oder kleine Alltagsgegenstände.",
+          "en": "Compact wooden shelf for decor, plants or small everyday items."
         },
-        "image": "/images/products/1.png"
+        "image": "/images/products/3.jpeg",
+        "alt": "Kompaktes Holzregal"
+      },
+      {
+        "name": {
+          "de": "Lego Schlüsselanhänger",
+          "en": "Lego Keychain"
+        },
+        "slug": "lego-schluesselanhaenger",
+        "description": {
+          "de": "Kreativer Schlüsselanhänger im Lego-Design – klein, verspielt und praktisch.",
+          "en": "Creative keychain in Lego design – small, playful and practical."
+        },
+        "image": "/images/products/5.jpeg",
+        "alt": "Kreativer Schlüsselanhänger im Lego-Design"
+      },
+      {
+        "name": {
+          "de": "Lego Herzen",
+          "en": "Lego Hearts"
+        },
+        "slug": "lego-herzen",
+        "description": {
+          "de": "Liebevolle Dekoherzen im Lego-Stil – ideal als kleines Geschenk.",
+          "en": "Loving decorative hearts in Lego style – ideal as a small gift."
+        },
+        "image": "/images/products/6.jpeg",
+        "alt": "Dekoherzen im Lego-Stil"
+      },
+      {
+        "name": {
+          "de": "Holz Schlüsselkasten Vogel Design",
+          "en": "Wooden Key Box Bird Design"
+        },
+        "slug": "holz-schluesselkasten-vogel",
+        "description": {
+          "de": "Dekorativer Schlüsselkasten aus Holz im Vogel-Design für mehr Ordnung im Flur.",
+          "en": "Decorative wooden key box in bird design for more order in the hallway."
+        },
+        "image": "/images/products/7.jpeg",
+        "alt": "Dekorativer Schlüsselkasten aus Holz im Vogel-Design"
       }
     ]
   },
@@ -107,39 +108,16 @@
     "products": [
       {
         "name": {
-          "de": "Smart Watch",
-          "en": "Smart Watch"
+          "de": "Holz Wasserwaage",
+          "en": "Wooden Spirit Level"
         },
-        "slug": "smart-watch",
+        "slug": "holz-wasserwaage",
         "description": {
-          "de": "Die Smart Watch unterstützt deinen Alltag mit smarten Funktionen.",
-          "en": "The Smart Watch supports your everyday life with smart features."
+          "de": "Klassische Wasserwaage aus Holz – funktional und robust für präzises Arbeiten.",
+          "en": "Classic wooden spirit level – functional and robust for precise work."
         },
-        "image": "/images/products/1.png"
-      },
-      {
-        "name": {
-          "de": "Eco Bottle",
-          "en": "Eco Bottle"
-        },
-        "slug": "eco-bottle",
-        "description": {
-          "de": "Die Eco Bottle ist langlebig, stilvoll und ideal für unterwegs.",
-          "en": "The Eco Bottle is durable, stylish and ideal for travel."
-        },
-        "image": "/images/products/1.png"
-      },
-      {
-        "name": {
-          "de": "Compact Backpack",
-          "en": "Compact Backpack"
-        },
-        "slug": "compact-backpack",
-        "description": {
-          "de": "Der Compact Backpack ist perfekt für Schule, Arbeit und Freizeit.",
-          "en": "The Compact Backpack is perfect for school, work and leisure."
-        },
-        "image": "/images/products/1.png"
+        "image": "/images/products/4.jpeg",
+        "alt": "Klassische Wasserwaage aus Holz"
       }
     ]
   }

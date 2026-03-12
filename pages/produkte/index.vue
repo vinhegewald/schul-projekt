@@ -34,17 +34,17 @@
         <div
           v-for="product in products"
           :key="product.name"
-          class="bg-[#DFDAD1] w-[370px] rounded-md border border-[#C1BBB1]"
+          class="bg-[#DFDAD1] w-[370px] rounded-md border border-[#C1BBB1] flex flex-col"
         >
-          <img :src="product.image" class="w-full" />
-          <div class="flex flex-col gap-12 p-4">
+          <img :src="product.image" :alt="product.alt" class="w-full h-52 object-cover" />
+          <div class="flex flex-col flex-1 gap-4 p-4">
             <div>
               <h2 class="text-xl font-semibold">{{ product.name }}</h2>
               <p class="text-md">{{ product.description }}</p>
             </div>
             <NuxtLink
-                :to="`/produkte/${product.slug}`"
-                class="bg-[#c9c4bb] hover:bg-[#d3cec5] transition-all rounded-md border border-[#b8b3aa] px-4 py-2"
+              :to="`/produkte/${product.slug}`"
+              class="bg-[#c9c4bb] hover:bg-[#d3cec5] transition-all rounded-md border border-[#b8b3aa] px-4 py-2 mt-auto"
             >
               {{ content.products.learnMore }}
             </NuxtLink>
@@ -73,13 +73,12 @@ const products = computed(() => {
   const filtered = !search
     ? [...allProducts.value]
     : allProducts.value.filter((product) => {
-      const regex = new RegExp(generateFuzzyRegexPatterns(search));
-
-      return (
-        regex.test(product.name.toLowerCase())
-        || regex.test(product.description.toLowerCase())
-      );
-    });
+        const regex = new RegExp(generateFuzzyRegexPatterns(search));
+        return (
+          regex.test(product.name.toLowerCase())
+          || regex.test(product.description.toLowerCase())
+        );
+      });
 
   if (sortOption.value === 'name_asc') {
     return [...filtered].sort((a, b) => a.name.localeCompare(b.name));
@@ -90,5 +89,16 @@ const products = computed(() => {
   }
 
   return filtered;
+});
+
+const config = useRuntimeConfig();
+const baseUrl = config.public.siteUrl;
+
+useSeoMeta({
+  title: 'Produkte',
+  ogTitle: 'Produkte',
+  description: 'Produkte von Print4Future',
+  ogDescription: 'Produkte von Print4Future',
+  ogImage: `${baseUrl}/image.png`,
 });
 </script>

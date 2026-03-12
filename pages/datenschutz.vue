@@ -9,4 +9,11 @@ import { useSiteContent } from '@/composables/useSiteContent';
 const { content } = useSiteContent();
 const title = computed(() => content.value.legal.datenschutz.title);
 const sections = computed(() => content.value.legal.datenschutz.sections);
+
+useSeoMeta({
+  title: "Datenschutz",
+  ogTitle: "Datenschutz",
+  description: "Datenschutz",
+  ogDescription: "Datenschutz",
+})
 </script>

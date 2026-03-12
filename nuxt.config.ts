@@ -10,5 +10,30 @@ export default defineNuxtConfig({
     '@nuxt/icon',
     '@nuxt/image',
     '@nuxtjs/tailwindcss'
-  ]
+  ],
+
+  runtimeConfig: {
+    public: {
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://print4future.de',
+    },
+  },
+
+  app: {
+    head: {
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/logo.png' }
+      ],
+    },
+  },
+
+
+  typescript: {
+    strict: true,
+    tsConfig: {
+      compilerOptions: {
+        module: 'esnext',   
+        target: 'esnext'
+      }
+    }
+  }
 })

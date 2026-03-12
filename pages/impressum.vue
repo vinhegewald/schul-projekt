@@ -9,4 +9,11 @@ import { useSiteContent } from '@/composables/useSiteContent';
 const { content } = useSiteContent();
 const title = computed(() => content.value.legal.impressum.title);
 const sections = computed(() => content.value.legal.impressum.sections);
+
+useSeoMeta({
+  title: "Impressum",
+  ogTitle: "Impressum",
+  description: "Impressum",
+  ogDescription: "Impressum",
+})
 </script>

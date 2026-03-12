@@ -8,6 +8,7 @@ interface ProductRecord {
   slug: string;
   description: string | LocalizedText;
   image: string;
+  alt?: string;
 }
 
 interface CategoryRecord {
@@ -21,6 +22,7 @@ export interface Product {
   slug: string;
   description: string;
   image: string;
+  alt: string;
   category: string;
   categorySlug: string;
 }
@@ -46,6 +48,7 @@ export function useProducts() {
           slug: product.slug,
           description: getLocalizedText(product.description, locale.value),
           image: product.image,
+          alt: product.alt ?? getLocalizedText(product.name, locale.value),
           category: localizedCategory,
           categorySlug: category.slug,
         })),

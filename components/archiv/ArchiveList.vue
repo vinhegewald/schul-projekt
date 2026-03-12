@@ -17,13 +17,18 @@ const { content } = useSiteContent();
 </template> -->
 
 <template>
-  <div class="min-h-600 py-10 flex flex-wrap">
-    <div
-      v-for="item in items"
-      :key="item.id"
-      class="w-1/2 p-4"
-    >
-      <div class="flex flex-col items-center rounded-xl gap-4 shadow-md hover:shadow-lg transition">
+  <div class="min-h-600 py-10 max-w-7xl flex flex-wrap self-center">
+    <!-- <div class="max-w-4xl mx-auto px-4 space-y-6"> -->
+
+      <!-- Article Card -->
+      <div
+        v-for="item in items"
+        :key="item.id"
+        class="md:w-1/2 p-4"
+      >
+        <div class="flex flex-col items-center rounded-xl gap-4 shadow-md hover:shadow-lg transition">
+          <!-- Preview Image -->
+
           <img
             :src="item.image"
             :alt="content.archive.previewAlt"

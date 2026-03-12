@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 import { useSiteContent } from '@/composables/useSiteContent';
+import emailjs from '@emailjs/browser';
+
+emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
 
 type SalutationValue = 'ms' | 'mr' | 'none' | '';
 
@@ -44,11 +47,9 @@ const resetForm = () => {
   };
 };
 
-const isEmailValid = (email: string) => {
-  return email.includes('@');
-};
+const isEmailValid = (email: string) => email.includes('@');
 
-const handleSubmit = () => {
+const handleSubmit = async () => {
   if (
     !formData.value.salutation
     || !formData.value.firstName
@@ -70,9 +71,25 @@ const handleSubmit = () => {
     return;
   }
 
-  console.log(content.value.contactForm.logLabel, formData.value);
-  resetForm();
-  alert(content.value.contactForm.alerts.success);
+  try {
+    const result = await emailjs.send(
+      import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+      {
+        anrede: formData.value.salutation,
+        vorname: formData.value.firstName,
+        nachname: formData.value.lastName,
+        email: formData.value.email,
+        kommentar: formData.value.comment,
+      },
+    );
+    console.log(content.value.contactForm.logLabel, result);
+    resetForm();
+    alert(content.value.contactForm.alerts.success);
+  } catch (err) {
+    console.error('EmailJS error:', err);
+    alert(content.value.contactForm.alerts.error ?? 'Fehler beim Senden der E-Mail.');
+  }
 };
 </script>
 
@@ -83,7 +100,6 @@ const handleSubmit = () => {
         <label class="block text-gray-800 text-sm sm:text-base mb-2">
           {{ content.contactForm.salutation }} <span class="text-red-800">*</span>
         </label>
-
         <div class="relative">
           <select
             v-model="formData.salutation"
@@ -100,7 +116,6 @@ const handleSubmit = () => {
         <label class="block text-gray-800 text-sm sm:text-base mb-2">
           {{ content.contactForm.firstName }} <span class="text-red-800">*</span>
         </label>
-
         <div class="relative">
           <input
             v-model="formData.firstName"
@@ -115,7 +130,6 @@ const handleSubmit = () => {
         <label class="block text-gray-800 text-sm sm:text-base mb-2">
           {{ content.contactForm.lastName }} <span class="text-red-800">*</span>
         </label>
-
         <div class="relative">
           <input
             v-model="formData.lastName"
@@ -130,7 +144,6 @@ const handleSubmit = () => {
         <label class="block text-gray-800 text-sm sm:text-base mb-2">
           {{ content.contactForm.email }} <span class="text-red-800">*</span>
         </label>
-
         <div class="relative">
           <input
             v-model="formData.email"
@@ -140,13 +153,13 @@ const handleSubmit = () => {
           >
         </div>
       </div>
-<!-- 
+
+      <!-- Phone field (optional) — uncomment if needed
       <div class="mb-6 sm:mb-8 md:mb-10 mx-4 sm:mx-6 md:mx-8 lg:mx-12">
         <label class="block text-gray-800 text-sm sm:text-base mb-2">
           {{ content.contactForm.phone }}
           <span class="text-gray-800 text-sm">{{ content.contactForm.optional }}</span>
         </label>
-
         <div class="relative">
           <input
             v-model="formData.phone"
@@ -154,21 +167,20 @@ const handleSubmit = () => {
             class="px-4 py-3 rounded appearance-none text-gray-800 w-full bg-[#E8E4DF] border-none outline-none focus:ring-2 focus:ring-[#8B8589]"
           >
         </div>
-      </div> -->
+      </div>
+      -->
 
       <div class="mb-6 sm:mb-8 md:mb-10 mx-4 sm:mx-6 md:mx-8 lg:mx-12">
         <label class="block text-gray-800 text-sm sm:text-base mb-2">
           {{ content.contactForm.comment }} <span class="text-red-800">*</span>
         </label>
-
         <div class="relative">
           <textarea
             v-model="formData.comment"
             required
             rows="3"
             class="px-4 py-3 rounded appearance-none text-gray-800 w-full max-w-md bg-[#E8E4DF] border-none outline-none focus:ring-2 focus:ring-[#8B8589] resize-none"
-          >
-          </textarea>
+          />
         </div>
       </div>
 
@@ -192,7 +204,9 @@ const handleSubmit = () => {
       </div>
 
       <div class="text-center sm:text-right mx-4 sm:mx-6 md:mx-8 lg:mx-12">
-        <button type="submit" class="w-full sm:w-auto bg-white border border-stone-800 text-stone-800 font-medium px-6 py-3 sm:px-8 sm:py-3 md:px-10 md:py-3 rounded-lg transition duration-300 shadow-sm hover:shadow-md hover:bg-stone-100 active:bg-stone-200"
+        <button
+          type="submit"
+          class="w-full sm:w-auto bg-white border border-stone-800 text-stone-800 font-medium px-6 py-3 sm:px-8 sm:py-3 md:px-10 md:py-3 rounded-lg transition duration-300 shadow-sm hover:shadow-md hover:bg-stone-100 active:bg-stone-200"
         >
           {{ content.contactForm.submit }}
         </button>
@@ -200,7 +214,6 @@ const handleSubmit = () => {
     </form>
   </div>
 </template>
-
 
 <style scoped>
 select::-ms-expand {
@@ -211,7 +224,6 @@ input:focus, select:focus, textarea:focus {
   box-shadow: 0 0 0 2px rgba(139, 133, 137, 0.3);
 }
 
-/* Checkbox styling for better cross-browser support */
 input[type="checkbox"] {
   -webkit-appearance: none;
   appearance: none;

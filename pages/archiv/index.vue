@@ -4,6 +4,16 @@ import { useSiteContent } from '@/composables/useSiteContent';
 
 const { articles } = useArticles();
 const { content } = useSiteContent();
+// const { loadAll } = useArticles()
+// const articles = await loadAll()
+
+useSeoMeta({
+  title: "Archiv",
+  ogTitle: "Archiv",
+  description: "Archiv",
+  ogDescription: "Archiv",
+})
+
 </script>
 
 
