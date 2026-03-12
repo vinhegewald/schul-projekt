@@ -1,5 +1,9 @@
 <script setup lang="ts">
-defineProps<{ items: any[] }>()
+import { useSiteContent } from '@/composables/useSiteContent';
+
+defineProps<{ items: any[] }>();
+
+const { content } = useSiteContent();
 </script>
 
 <!-- <template>
@@ -24,28 +28,26 @@ defineProps<{ items: any[] }>()
       >
         <div class="flex flex-col items-center rounded-xl gap-4 shadow-md hover:shadow-lg transition">
           <!-- Preview Image -->
+
           <img
             :src="item.image"
-            alt="Preview"
+            :alt="content.archive.previewAlt"
             class="w-full h-40 object-cover rounded-lg shrink-0"
           />
-  
-          <!-- Text Content -->
-          <div class="flex-1 text-center">
-            <h2 class="text-lg font-semibold text-gray-800">
-              {{ item.title }}
-            </h2>
-            <p class="text-sm text-gray-600 mt-1 text-start mx-5">
-              {{ item.excerpt }}
-            </p>
-            <NuxtLink :to="`/archiv/${item.slug}`">
-              Mehr erfahren..
-            </NuxtLink>
-            <div class="h-3"/>
-          </div>
-        </div>
-      <!-- </div> -->
 
+        <div class="flex-1 text-center">
+          <h2 class="text-lg font-semibold text-gray-800">
+            {{ item.title }}
+          </h2>
+          <p class="text-sm text-gray-600 mt-1 text-start mx-5">
+            {{ item.excerpt }}
+          </p>
+          <NuxtLink :to="`/archiv/${item.slug}`">
+            {{ content.archive.learnMore }}
+          </NuxtLink>
+          <div class="h-3" />
+        </div>
+      </div>
     </div>
   </div>
 </template>

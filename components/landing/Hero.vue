@@ -11,24 +11,28 @@
       >
         Print 4 Future
       </h1>
-      <a
-        href="/produkte"
+      <NuxtLink
+        to="/produkte"
         class="border-2 border-white mt-5 text-white px-9 py-4 text-xl rounded-md font-medium hover:bg-white hover:text-black transition-colors"
       >
-        Alle Produkte
-      </a>
+        {{ content.home.heroCta }}
+      </NuxtLink>
     </div>
 
     <p
       class="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white text-sm z-10"
     >
-      Ein Schuelerunternehmen der BBS1 Lueneburg
+      {{ content.home.heroSubtitle }}
     </p>
   </section>
 </template>
 
 <script setup lang="ts">
+import { useSiteContent } from '@/composables/useSiteContent';
+
 defineOptions({
-  name: "LandingHero",
+  name: 'LandingHero',
 });
+
+const { content } = useSiteContent();
 </script>

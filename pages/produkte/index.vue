@@ -1,11 +1,11 @@
 <template>
   <div class="mt-[117px]">
     <div class="flex flex-col items-center justify-center space-y-6">
-      <h1 class="mt-24 text-7xl font-bold text-center">Produkte</h1>
+      <h1 class="mt-24 text-7xl font-bold text-center">{{ content.products.title }}</h1>
       <div class="w-full max-w-2xl">
         <input
           v-model="searchParams"
-          placeholder="Produkt abc...."
+          :placeholder="content.products.searchPlaceholder"
           class="w-full h-12 mt-24 px-4 py-2 bg-[#DFDAD1] rounded-md border border-[#C1BBB1] outline-none"
         />
       </div>
@@ -16,15 +16,15 @@
       >
         <p class="text-left">
           {{ products?.length || 0 }}
-          {{ (products?.length || 0) === 1 ? "Produkt" : "Produkte" }}
+          {{ (products?.length || 0) === 1 ? content.products.countSingular : content.products.countPlural }}
         </p>
         <select
           v-model="sortOption"
           class="h-12 w-64 px-4 py-2 bg-[#DFDAD1] rounded-md border border-[#C1BBB1] outline-none text-black cursor-pointer"
         >
-          <option value="default">Sortierung</option>
-          <option value="name_asc">Alphabetisch (A-Z)</option>
-          <option value="name_desc">Alphabetisch (Z-A)</option>
+          <option value="default">{{ content.products.sortDefault }}</option>
+          <option value="name_asc">{{ content.products.sortNameAsc }}</option>
+          <option value="name_desc">{{ content.products.sortNameDesc }}</option>
         </select>
       </div>
 
@@ -34,19 +34,19 @@
         <div
           v-for="product in products"
           :key="product.name"
-          class="bg-[#DFDAD1] w-[370px] rounded-md border border-[#C1BBB1]"
+          class="bg-[#DFDAD1] w-[370px] rounded-md border border-[#C1BBB1] flex flex-col"
         >
           <img :src="product.image" :alt="product.alt" class="w-full h-52 object-cover" />
-          <div class="flex flex-col gap-12 p-4">
+          <div class="flex flex-col flex-1 gap-4 p-4">
             <div>
               <h2 class="text-xl font-semibold">{{ product.name }}</h2>
               <p class="text-md">{{ product.description }}</p>
             </div>
             <NuxtLink
               :to="`/produkte/${product.slug}`"
-              class="bg-[#c9c4bb] hover:bg-[#d3cec5] transition-all rounded-md border border-[#b8b3aa] px-4 py-2"
+              class="bg-[#c9c4bb] hover:bg-[#d3cec5] transition-all rounded-md border border-[#b8b3aa] px-4 py-2 mt-auto"
             >
-              Mehr erfahren...
+              {{ content.products.learnMore }}
             </NuxtLink>
           </div>
         </div>
@@ -56,69 +56,49 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch } from "vue";
-import { generateFuzzyRegexPatterns } from "@/utils/fuzzySearch";
-import productsData from "@/data/products.json";
+import { computed, ref } from 'vue';
+import { useProducts } from '@/composables/useProducts';
+import { useSiteContent } from '@/composables/useSiteContent';
+import { generateFuzzyRegexPatterns } from '@/utils/fuzzySearch';
 
-interface Product {
-  name: string;
-  description: string;
-  image: string;
-  alt: string;
-  slug: string;
-}
+const { content } = useSiteContent();
+const { allProducts } = useProducts();
 
-interface Category {
-  category: string;
-  products: Product[];
-}
+const searchParams = ref('');
+const sortOption = ref('default');
 
-const searchParams = ref("");
-const sortOption = ref("default");
-
-// flat product list for display
-const products = ref<Product[]>([]);
-
-// load & flatten JSON
-const allProducts: Product[] = productsData.flatMap(
-  (cat: Category) => cat.products,
-);
-
-onMounted(() => {
-  applyFiltersAndSorting();
-});
-
-watch([searchParams, sortOption], () => {
-  applyFiltersAndSorting();
-});
-
-function applyFiltersAndSorting() {
+const products = computed(() => {
   const search = searchParams.value.trim().toLowerCase();
-  const regex = new RegExp(generateFuzzyRegexPatterns(search));
 
-  const filtered = allProducts.filter((product) => {
-    return (
-      regex.test(product.name.toLowerCase()) ||
-      regex.test(product.description.toLowerCase())
-    );
-  });
+  const filtered = !search
+    ? [...allProducts.value]
+    : allProducts.value.filter((product) => {
+        const regex = new RegExp(generateFuzzyRegexPatterns(search));
+        return (
+          regex.test(product.name.toLowerCase())
+          || regex.test(product.description.toLowerCase())
+        );
+      });
 
-  if (sortOption.value === "name_asc") {
-    filtered.sort((a, b) => a.name.localeCompare(b.name));
-  } else if (sortOption.value === "name_desc") {
-    filtered.sort((a, b) => b.name.localeCompare(a.name));
+  if (sortOption.value === 'name_asc') {
+    return [...filtered].sort((a, b) => a.name.localeCompare(b.name));
   }
 
-  products.value = filtered;
-}
+  if (sortOption.value === 'name_desc') {
+    return [...filtered].sort((a, b) => b.name.localeCompare(a.name));
+  }
 
-const config = useRuntimeConfig()
-const baseUrl = config.public.siteUrl
+  return filtered;
+});
+
+const config = useRuntimeConfig();
+const baseUrl = config.public.siteUrl;
+
 useSeoMeta({
   title: 'Produkte',
   ogTitle: 'Produkte',
   description: 'Produkte von Print4Future',
   ogDescription: 'Produkte von Print4Future',
   ogImage: `${baseUrl}/image.png`,
-})
+});
 </script>

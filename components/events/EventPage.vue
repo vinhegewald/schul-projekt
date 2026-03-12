@@ -7,8 +7,9 @@
       role="img"
       :aria-label="headerImageAlt"
     >
-      <!-- <div class="hero-overlay absolute inset-0 bg-gradient-to-r from-cyan-500/70 to-transparent"></div> -->
-      
+        <!--dark semi-transparent gradient for better contrast, can be removed -->
+<div class="hero-overlay absolute inset-0 bg-gradient-to-r from-black/50 to-transparent"></div>
+
       <div class="hero-content relative z-10 p-12 text-white max-w-2xl">
         <h1 class="text-5xl md:text-6xl font-bold mb-4 drop-shadow-lg">
           {{ title }}
@@ -42,7 +43,7 @@
         <EventsMapComponent :location="location" :zoom="mapZoom" />
         <template #fallback>
           <div class="h-[400px] bg-gray-200 rounded-lg flex items-center justify-center">
-            <p class="text-gray-600">Karte wird geladen...</p>
+            <p class="text-gray-600">{{ content.events.loadingMap }}</p>
           </div>
         </template>
       </ClientOnly>
@@ -52,6 +53,8 @@
 </template>
 
 <script setup lang="ts">
+import { useSiteContent } from '@/composables/useSiteContent';
+
 interface Location {
   name: string;
   address: string;
@@ -79,6 +82,8 @@ withDefaults(defineProps<EventPageProps>(), {
 defineOptions({
   name: 'EventPage',
 });
+
+const { content } = useSiteContent();
 </script>
 
 

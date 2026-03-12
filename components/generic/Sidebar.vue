@@ -4,7 +4,8 @@
   >
     <div class="flex items-center justify-between h-full">
       <button
-        aria-label="Toggle menu"
+        :aria-label="content.sidebar.toggleMenuAria"
+        :aria-expanded="isMenuOpen"
         class="pl-10 text-black focus:outline-none z-50"
         @click="toggleMenu"
       >
@@ -30,15 +31,27 @@
         </svg>
       </button>
 
-      <a href="/" class="absolute left-1/2 transform -translate-x-1/2">
+      <NuxtLink
+        to="/"
+        class="absolute left-1/2 transform -translate-x-1/2"
+        @click="closeMenu"
+      >
         <img
           src="/images/transparent_logo.png"
-          alt="Logo"
+          :alt="content.sidebar.logoAlt"
           class="h-[110px] w-auto"
         />
-      </a>
+      </NuxtLink>
 
-      <div class="w-12"></div>
+      <button
+        :aria-label="content.sidebar.toggleLanguageAria"
+        class="min-w-[78px] rounded-md border border-[#BCB5AA] px-3 py-2 text-sm font-semibold text-black transition hover:bg-[#dcd5cb]"
+        @click="toggleLocale"
+      >
+        <span :class="locale === 'de' ? 'text-black' : 'text-neutral-500'">DE</span>
+        <span class="mx-1 text-neutral-500">/</span>
+        <span :class="locale === 'en' ? 'text-black' : 'text-neutral-500'">EN</span>
+      </button>
     </div>
 
     <div
@@ -55,27 +68,26 @@
           : '-translate-x-full opacity-100',
       ]"
     >
-      <template v-for="(item, index) in menuItems" :key="index">
-        <!-- Einfacher Link ohne Unterkategorien -->
+      <template v-for="item in menuItems" :key="item.id">
         <NuxtLink
           v-if="!item.children"
           :to="item.href"
           class="font-medium hover:underline"
+          @click="closeMenu"
         >
           {{ item.label }}
         </NuxtLink>
 
-        <!-- Kategorie mit Dropdown -->
         <div v-else class="flex flex-col gap-2">
           <button
-            @click="toggleCategory(getCategoryId(item.label))"
             class="flex items-center justify-between font-medium hover:underline text-left"
+            @click="toggleCategory(item.id)"
           >
             <span>{{ item.label }}</span>
             <svg
               :class="[
                 'w-5 h-5 transition-transform duration-200',
-                openCategories[getCategoryId(item.label)] ? 'rotate-180' : '',
+                openCategories[item.id] ? 'rotate-180' : '',
               ]"
               fill="none"
               stroke="currentColor"
@@ -90,14 +102,15 @@
             </svg>
           </button>
           <div
-            v-if="openCategories[getCategoryId(item.label)]"
+            v-if="openCategories[item.id]"
             class="flex flex-col gap-2 pl-4 border-l-2 border-[#BCB5AA]"
           >
             <NuxtLink
-              v-for="(child, childIndex) in item.children"
-              :key="childIndex"
+              v-for="child in item.children"
+              :key="child.id"
               :to="child.href"
               class="text-sm hover:underline"
+              @click="closeMenu"
             >
               {{ child.label }}
             </NuxtLink>
@@ -109,78 +122,50 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from "vue";
+import { computed, reactive, ref } from 'vue';
+import { useLocale } from '@/composables/useLocale';
+import { useSiteContent } from '@/composables/useSiteContent';
 
 defineOptions({
-  name: "GenericNavbar",
+  name: 'GenericNavbar',
 });
 
 interface MenuItem {
+  id: string;
   label: string;
   href?: string;
   children?: MenuItem[];
 }
 
-interface NavbarProps {
-  menuItems?: MenuItem[];
-}
+const { content } = useSiteContent();
+const { locale, toggleLocale } = useLocale();
 
-const props = withDefaults(defineProps<NavbarProps>(), {
-  menuItems: () => [
-    {
-      label: "Home",
-      href: "/",
-    },
-    {
-      label: "Kontakt",
-      href: "/forms/contactForm",
-    },
-    {
-      label: "Produkte",
-      children: [
-        { label: "Alle Produkte", href: "/produkte" },
-        { label: "Dekoration", href: "/produkte/kategorie/dekoration" },
-        {
-          label: "Alltagshelfer",
-          href: "/produkte/kategorie/alltagshelfer",
-        },
-      ],
-    },
-    {
-      label: "Events",
-      children: [
-        { label: "Summer Sale", href: "/events/summer-sale" },
-        {
-          label: "Wirtschafts Live Messe",
-          href: "/events/wirtschafts-live-messe",
-        },
-      ],
-    },
-    {
-      label: "Archiv",
-      href: "/archiv",
-    },
-  ],
-});
+const menuItems = computed<MenuItem[]>(() => content.value.sidebar.menuItems);
 
 const isMenuOpen = ref(false);
 const openCategories = reactive<Record<string, boolean>>({});
 
+const resetCategories = () => {
+  Object.keys(openCategories).forEach((key) => {
+    openCategories[key] = false;
+  });
+};
+
+const closeMenu = () => {
+  isMenuOpen.value = false;
+  resetCategories();
+};
+
 const toggleMenu = () => {
-  isMenuOpen.value = !isMenuOpen.value;
-  if (!isMenuOpen.value) {
-    // Alle Kategorien schließen wenn Menü geschlossen wird
-    Object.keys(openCategories).forEach((key) => {
-      openCategories[key] = false;
-    });
+  if (isMenuOpen.value) {
+    closeMenu();
+    return;
   }
+
+  isMenuOpen.value = true;
 };
 
 const toggleCategory = (categoryId: string) => {
   openCategories[categoryId] = !openCategories[categoryId];
-};
-
-const getCategoryId = (label: string) => {
-  return label.toLowerCase().replace(/\s+/g, "-");
 };
 </script>

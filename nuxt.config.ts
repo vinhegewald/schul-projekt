@@ -12,6 +12,12 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss'
   ],
 
+  runtimeConfig: {
+    public: {
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://print4future.de',
+    },
+  },
+
   app: {
     head: {
       link: [

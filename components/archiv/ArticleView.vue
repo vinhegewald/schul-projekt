@@ -1,5 +1,9 @@
 <script setup lang="ts">
-defineProps<{ article: any }>()
+import { useSiteContent } from '@/composables/useSiteContent';
+
+defineProps<{ article: any }>();
+
+const { content } = useSiteContent();
 </script>
 
 <template>
@@ -13,8 +17,14 @@ defineProps<{ article: any }>()
     <div class="max-w-6xl mx-auto px-4 space-y-6">
 
       <article class="flex flex-col">
-        <h2 class="font-bold text-4xl my-8 self-center">{{ article.title }}</h2>
-        <p class="text-2sm font-light ml-5"><i>{{ article.date }}</i></p>
+        <img
+          :src="article.image"
+          :alt="content.archive.previewAlt"
+          class="w-full h-40 object-cover rounded-lg shrink-0"
+        />
+        <h1 class="text-2xl mt-10">{{ article.title }}</h1>
+        <p class="text-2sm font-light"><i>{{ article.date }}</i></p>
+
         <hr class="border-t border-gray-300 my-6" />
         <div
           class="w-full max-w-[1650px] flex items-center justify-between mb-6 px-4"
