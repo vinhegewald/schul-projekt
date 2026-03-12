@@ -1,6 +1,6 @@
 {
   "id": 2,
-  "image": "http://localhost:3000/images/background-hero.png",
+  "image": "/images/background-hero.png",
   "slug": "test-article2",
   "title": "Test Article2",
   "description": "A short intro to something interesting",
