@@ -186,11 +186,11 @@ export const siteContent: Record<Locale, SiteContent> = {
       locationTitle: 'Veranstaltungsort',
       openInGoogleMaps: 'In Google Maps öffnen →',
       summerSale: {
-        title: 'SUMMER SALE',
-        subtitle: 'Merken Sie sich den Termin: 11.06.26',
+        title: 'Summer Sale',
+        subtitle: 'Juni 2026',
         contentHeader: 'Summer Sale:',
         description: [
-          'Weitere Informationen zu unserem Summer Sale folgen in Kürze. Merken Sie sich schon jetzt den 11.06.26 vor – wir freuen uns darauf, Sie bei uns begrüßen zu dürfen.',
+          'Weitere Informationen zu unserem Summer Sale folgen in Kürze.',
         ],
         location: {
           name: 'BBS1 Lüneburg',
@@ -202,19 +202,19 @@ export const siteContent: Record<Locale, SiteContent> = {
         },
       },
       wirtschaftsLiveMesse: {
-        title: 'WIRTSCHAFTS LIVE MESSE',
-        subtitle: 'Besuchen Sie uns auf der Messe',
+        title: 'Wirtschafts Live Messe',
+        subtitle: 'Besuchen Sie uns auf der Messe am 18.03.2026',
         contentHeader: 'Über die Veranstaltung:',
         description: [
-          'Die Wirtschaft-Live-Messe der Schülerunternehmen findet jedes Jahr abwechselnd an einer Berufsschule in Niedersachsen statt. Dort stellen etwa 20 Schülerunternehmen aus ganz Niedersachsen aus und messen sich in den Wettbewerben „bester Messestand“, „bester Messebandbeitrag“, „bester Imagefilm“ und „beste Fotopräsentation der Geschäftsidee“.',
+          'Die Wirtschaft-Live-Messe der Schülerunternehmen findet dieses Jahr in der BBS Walsrode statt. Dort stellen etwa 20 Schülerunternehmen aus ganz Niedersachsen aus und messen sich in den Wettbewerben „bester Messestand“, „bester Messebandbeitrag“, „bester Imagefilm“ und „beste Fotopräsentation der Geschäftsidee“.',
           'Die Messe bietet Jugendlichen die Möglichkeit, ihre Geschäftsideen und Produkte einer breiten Öffentlichkeit vorzustellen. Ziel der Veranstaltung ist es, unternehmerisches Denken und Handeln praxisnah zu fördern, wirtschaftliche Kompetenzen zu stärken und den Austausch zwischen Schüler/-innen, Schulen, Wirtschaft und Politik zu unterstützen.',
         ],
         location: {
-          name: 'Messezentrum Lüneburg',
-          address: 'Am Sande 1, 21335 Lüneburg, Deutschland',
+          name: 'BBS Walsrode',
+          address: 'Am bhf 80, 29664 Walsrode, Deutschland',
           coordinates: {
-            lat: 53.2492,
-            lng: 10.414,
+            lat: 52.8704,
+            lng: 9.5987,
           },
         },
       },
@@ -429,11 +429,11 @@ export const siteContent: Record<Locale, SiteContent> = {
       locationTitle: 'Venue',
       openInGoogleMaps: 'Open in Google Maps →',
       summerSale: {
-        title: 'SUMMER SALE',
-        subtitle: 'Save the date: 11.06.26',
+        title: 'Summer Sale',
+        subtitle: 'June 2026',
         contentHeader: 'Summer Sale:',
         description: [
-          'More information about our Summer Sale will follow shortly. Save the date 11.06.26 now already – we look forward to welcoming you there.',
+          'More information about our Summer Sale will follow shortly.',
         ],
         location: {
           name: 'BBS1 Lüneburg',
@@ -445,19 +445,19 @@ export const siteContent: Record<Locale, SiteContent> = {
         },
       },
       wirtschaftsLiveMesse: {
-        title: 'BUSINESS LIVE FAIR',
-        subtitle: 'Visit us at the fair',
+        title: 'Business Live Fair',
+        subtitle: 'Visit us at the fair 18.03.2026',
         contentHeader: 'About the event:',
         description: [
-          'The Business Live Fair for student companies takes place every year at a different vocational school in Lower Saxony. Around 20 student companies from across Lower Saxony present their work there and compete in categories such as “best trade fair booth”, “best fair magazine contribution”, “best image film” and “best photo presentation of the business idea”.',
+          'This year the Business Live Fair for student companies takes place in the BBS Walsrode. Around 20 student companies from across Lower Saxony present their work there and compete in categories such as “best trade fair booth”, “best fair magazine contribution”, “best image film” and “best photo presentation of the business idea”.',
           'The fair gives young people the opportunity to present their business ideas and products to a wider audience. Its goal is to promote entrepreneurial thinking and action in a practical way, strengthen business skills, and encourage exchange between students, schools, business and politics.',
         ],
         location: {
-          name: 'Lüneburg Exhibition Center',
-          address: 'Am Sande 1, 21335 Lüneburg, Germany',
+          name: 'BBS Walsrode',
+          address: 'Am bhf 80, 29664 Walsrode, Deutschland',
           coordinates: {
-            lat: 53.2492,
-            lng: 10.414,
+            lat: 52.8704,
+            lng: 9.5987,
           },
         },
       },
