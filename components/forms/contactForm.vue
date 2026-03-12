@@ -173,16 +173,16 @@ const handleSubmit = () => {
       </div>
 
       <div class="flex flex-col items-start gap-3 mx-4 sm:mx-6 md:mx-8 lg:mx-12 mb-6">
-        <div class="flex items-start gap-3">
+        <div class="flex items-center gap-3">
           <input
             id="datenschutz"
             v-model="formData.privacy"
             type="checkbox"
             required
-            class="mt-1 h-4 w-4 cursor-pointer"
+            class="h-4 w-4 cursor-pointer"
           >
           <label for="datenschutz" class="text-sm text-gray-800 cursor-pointer leading-tight">
-            <span>{{ content.contactForm.privacyPrefix }} </span>
+            {{ content.contactForm.privacyPrefix }}
             <NuxtLink to="/datenschutz" class="text-blue-800 hover:underline">
               {{ content.contactForm.privacyLink }}
             </NuxtLink>

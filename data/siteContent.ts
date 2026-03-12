@@ -339,7 +339,7 @@ export const siteContent: Record<Locale, SiteContent> = {
       comment: 'Kommentar',
       privacyPrefix: 'Ich habe die',
       privacyLink: 'Datenschutzbestimmungen',
-      privacySuffix: 'gelesen',
+      privacySuffix: ' gelesen',
       submit: 'Senden',
       selectPlaceholder: 'Bitte auswählen',
       logLabel: 'Formulardaten:',
